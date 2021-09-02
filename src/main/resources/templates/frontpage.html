@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FrontPage DasGarage</title>
+</head>
+
+<body>
+<h1>Welcome to Online Store DAS Garage</h1>
+<iframe src="https://www.meteoblue.com/en/weather/widget/daily/java_georgia_614217?geoloc=fixed&days=4&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&precipunit=MILLIMETER&coloured=coloured&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&uv=1&humidity=0&precipitation=0&precipitation=1&precipitationprobability=0&precipitationprobability=1&spot=0&spot=1&pressure=0&layout=dark"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 216px; height: 420px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/en/weather/week/java_georgia_614217?utm_source=weather_widget&utm_medium=linkus&utm_content=daily&utm_campaign=Weather%2BWidget" target="_blank">meteoblue</a></div>
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>brand</th>
+        <th>mileage km</th>
+        <th>price €</th>
+        <th>quantity</th>
+        <th></th>
+    </tr>
+
+    <tr th:each="product:${stockList}">
+        <td th:text="${product.productId}"></td>
+        <td th:text="${product.brand}"></td>
+        <td th:text="${product.mileage}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.quantity}"></td>
+        <td>
+            <a th:href="@{'/product/view/' + ${product.productId}}">View Product</a>
+        </td>
+    </tr>
+
+</table>
+
+</body>
+
+</html>
