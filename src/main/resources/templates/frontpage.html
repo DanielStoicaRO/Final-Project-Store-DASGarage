@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>FrontPage DasGarage</title>
+
+    <style>
+        body {
+            background-image: url('/static/imagines/background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+
 </head>
 
 <body>
+
 <h1>Welcome to Online Store DAS Garage</h1>
 
 <a class="weatherwidget-io" href="https://forecast7.com/en/44d4326d10/bucharest/" data-label_1="BUCHAREST"
@@ -25,10 +36,10 @@
 <table>
     <tr>
         <th>id</th>
-        <th>brand</th>
-        <th>mileage km</th>
-        <th>price €</th>
-        <th>quantity</th>
+        <th>Brand</th>
+        <th>Mileage KM</th>
+        <th>Price €</th>
+        <th>Quantity</th>
         <th></th>
     </tr>
 
@@ -39,12 +50,14 @@
         <td th:text="${product.price}"></td>
         <td th:text="${product.quantity}"></td>
         <td>
-            <a th:href="@{'/product/view/' + ${product.productId}}">View Product</a>
+            <a th:href="@{'/product/view/' + ${product.productId}}">View</a>
+            <a th:href="@{'/product/edit/' + ${product.productId}}">Edit</a>
+            <a th:href="@{'/product/delete/' + ${product.productId}}">Delete</a>
         </td>
     </tr>
 
 </table>
+<a href="/product/add">Add Product</a>
 
 </body>
-
 </html>

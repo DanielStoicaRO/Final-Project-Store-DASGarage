@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Add</title>
+</head>
+<body>
+
+<form action="/product/save" method="post" th:object="${product}">
+
+    <input type="hidden" name="productId" th:field="*{productId}">
+
+    <input type="text" name="brand" placeholder="Enter Brand" th:field="*{brand}">
+    <br>
+    <input type="text" name="mileage" placeholder="Enter Mileage" th:field="*{mileage}">
+    <br>
+    <input type="text" name="price" placeholder="Enter Price" th:field="*{price}">
+    <br>
+    <input type="text" name="quantity" placeholder="Enter Quantity" th:field="*{quantity}">
+    <br>
+    <input type="submit">
+
+</form>
+
+</body>
+</html>
