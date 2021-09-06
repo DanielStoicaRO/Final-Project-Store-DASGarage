@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Add</title>
+    <style>
+        body {
+            background-image: url('/imagines/background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+
+</head>
+<body>
+
+<form action="/product/save" method="post" th:object="${product}">
+
+    <input type="hidden" name="productId" th:field="*{productId}">
+
+    <div class="mb-3">
+        <label for="inputBrand" class="form-label">Brand</label>
+        <input type="text" class="form-control" id="inputBrand" name="brand" th:field="*{brand}">
+    </div>
+
+    <div class="mb-3">
+        <label for="inputMileage" class="form-label">Mileage</label>
+        <input type="text" class="form-control" id="inputMileage" name="mileage" th:field="*{mileage}">
+    </div>
+
+    <div class="mb-3">
+        <label for="inputPrice" class="form-label">Price</label>
+        <input type="text" class="form-control" id="inputPrice" name="price" th:field="*{price}">
+    </div>
+
+    <div class="mb-3">
+        <label for="inputQuantity" class="form-label">Quantity</label>
+        <input type="text" class="form-control" id="inputQuantity" name="quantity" th:field="*{quantity}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</body>
+</html>

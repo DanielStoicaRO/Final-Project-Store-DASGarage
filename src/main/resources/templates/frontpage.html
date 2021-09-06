@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>FrontPage DasGarage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-image: url('/imagines/background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+
 </head>
 
 <body>
+
 <h1>Welcome to Online Store DAS Garage</h1>
 
 <a class="weatherwidget-io" href="https://forecast7.com/en/44d4326d10/bucharest/" data-label_1="BUCHAREST"
@@ -22,29 +38,40 @@
     }(document, 'script', 'weatherwidget-io-js');
 </script>
 
-<table>
-    <tr>
-        <th>id</th>
-        <th>brand</th>
-        <th>mileage km</th>
-        <th>price €</th>
-        <th>quantity</th>
-        <th></th>
-    </tr>
 
-    <tr th:each="product:${stockList}">
-        <td th:text="${product.productId}"></td>
-        <td th:text="${product.brand}"></td>
-        <td th:text="${product.mileage}"></td>
-        <td th:text="${product.price}"></td>
-        <td th:text="${product.quantity}"></td>
-        <td>
-            <a th:href="@{'/product/view/' + ${product.productId}}">View Product</a>
-        </td>
-    </tr>
+<a class="btn btn-primary" href="/product/add">Add Product</a>
 
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="container">
+                <div class="row" >
+                    <div class="card" th:each="product:${stockList}" style="width: 18rem;">
+                        <img th:src="${product.imagineUrl}" class="card-img-top" alt="CarPictures">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${product.brand}"></h5>
+                            <p class="card-text" th:text="${product.description}"> </p>
+                            <p class="card-text" th:text="${product.mileage} + ' KM' "> </p>
+                            <p class="card-text" th:text="${product.price} + ' Price €' "> </p>
+                            <p class="card-text" th:text="${product.quantity} + ' Units' "> </p>
+                            <a th:href="@{'/product/view/' + ${product.productId}}" class="btn btn-primary">View</a>
+                            <a th:href="@{'/product/edit/' + ${product.productId}}" class="btn btn-primary">Edit</a>
+                            <a th:href="@{'/product/delete/' + ${product.productId}}" class="btn btn-primary">Delete</a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+<!--        <div class="col-md-6"></div>-->
+
+    </div>
+</div>
+
+<!--<iframe src="https://www.cursbnr.ro/"></iframe>-->
 
 </body>
-
 </html>
+

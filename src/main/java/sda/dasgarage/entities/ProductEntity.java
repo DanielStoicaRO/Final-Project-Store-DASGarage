@@ -13,6 +13,24 @@ public class ProductEntity {
     private String mileage;
     private Double price;
     private Integer quantity;
+    private String description;
+    private String imagineUrl;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImagineUrl() {
+        return imagineUrl;
+    }
+
+    public void setImagineUrl(String imagineUrl) {
+        this.imagineUrl = imagineUrl;
+    }
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
