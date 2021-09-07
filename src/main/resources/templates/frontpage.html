@@ -23,7 +23,7 @@
 <body>
 
 <h1>Welcome to Online Store DAS Garage</h1>
-
+<!--widgets weather cast-->
 <a class="weatherwidget-io" href="https://forecast7.com/en/44d4326d10/bucharest/" data-label_1="BUCHAREST"
    data-label_2="WEATHER" data-theme="original">BUCHAREST WEATHER</a>
 <script>
@@ -38,7 +38,6 @@
     }(document, 'script', 'weatherwidget-io-js');
 </script>
 
-
 <a class="btn btn-primary" href="/product/add">Add Product</a>
 
 <div class="container">
@@ -46,15 +45,15 @@
         <div class="col-md-12">
 
             <div class="container">
-                <div class="row" >
+                <div class="row">
                     <div class="card" th:each="product:${stockList}" style="width: 18rem;">
                         <img th:src="${product.imagineUrl}" class="card-img-top" alt="CarPictures">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product.brand}"></h5>
-                            <p class="card-text" th:text="${product.description}"> </p>
-                            <p class="card-text" th:text="${product.mileage} + ' KM' "> </p>
-                            <p class="card-text" th:text="${product.price} + ' Price €' "> </p>
-                            <p class="card-text" th:text="${product.quantity} + ' Units' "> </p>
+                            <p class="card-text" th:text="${product.description}"></p>
+                            <p class="card-text" th:text="${product.mileage} + ' KM' "></p>
+                            <p class="card-text" th:text="${product.price} + ' Price €' "></p>
+                            <p class="card-text" th:text="${product.quantity} + ' Units' "></p>
                             <a th:href="@{'/product/view/' + ${product.productId}}" class="btn btn-primary">View</a>
                             <a th:href="@{'/product/edit/' + ${product.productId}}" class="btn btn-primary">Edit</a>
                             <a th:href="@{'/product/delete/' + ${product.productId}}" class="btn btn-primary">Delete</a>
@@ -65,8 +64,7 @@
                 </div>
             </div>
         </div>
-<!--        <div class="col-md-6"></div>-->
-
+        <!--        <div class="col-md-6"></div>-->
     </div>
 </div>
 
