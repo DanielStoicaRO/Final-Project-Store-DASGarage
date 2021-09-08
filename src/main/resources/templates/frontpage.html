@@ -10,9 +10,13 @@
             integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
             crossorigin="anonymous"></script>
 
+    <div style="position: absolute; top: 130px !important; left: 0;">
+        <img src="/imagines/dasgarageLogo.jpg" class="img-fluid logo-custom" alt="...">
+    </div>
+
     <style>
         body {
-            background-image: url('/imagines/backgroundFront.jpg');
+            background-image: url('/imagines/backgroundView.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -22,6 +26,14 @@
         }
         .card {
             margin-top: 10px;
+        }
+        .logo-custom {
+            width: 300px;
+            height: 250px;
+        }
+        .card-custom {
+            margin: auto;
+            margin-top: 50px;
         }
     </style>
 
@@ -34,16 +46,6 @@
 </div>
 
 
-<div style="position: absolute; top: 100px !important; left: 0;">
-
-    <iframe src="https://www.meteoblue.com/en/weather/widget/daily/java_georgia_614217?geoloc=fixed&days=4&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&precipunit=MILLIMETER&coloured=monochrome&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&humidity=0&precipitation=0&precipitationprobability=0&precipitationprobability=1&spot=0&pressure=0&layout=light"
-            frameborder="0" scrolling="NO" allowtransparency="true"
-            sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
-            style="width: 216px; height: 420px"></iframe>
-
-</div>
-
-</div>
 
 <!--widgets curs valutar-->
 <div style="position: absolute; top: 100px; right: 0;">
@@ -85,6 +87,28 @@
         <!--        <div class="col-md-6"></div>-->
     </div>
 </div>
+
+
+
+<div class="container">
+    <div class="row">
+        <a class="weatherwidget-io" href="https://forecast7.com/en/44d4326d10/bucharest/" data-label_1="BUCHAREST"
+           data-label_2="WEATHER" data-theme="original">BUCHAREST WEATHER</a>
+        <script>
+            !function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (!d.getElementById(id)) {
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = 'https://weatherwidget.io/js/widget.min.js';
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+            }(document, 'script', 'weatherwidget-io-js');
+        </script>
+    </div>
+</div>
+
+
 
 
 <!--<iframe src="https://www.cursbnr.ro/"></iframe>-->
