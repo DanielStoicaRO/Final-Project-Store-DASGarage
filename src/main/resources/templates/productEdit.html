@@ -17,48 +17,66 @@
             background-attachment: fixed;
             background-size: cover;
         }
+        .container label {
+            color: white;
+            font-weight: bold;
+        }
+        .container{
+            margin: 0px;
+        }
     </style>
 
 </head>
 
 <body>
-<form action="/product/save" method="post" th:object="${product}">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
 
-    <input type="hidden" name="productId" th:field="*{productId}">
+            <form action="/product/save" method="post" th:object="${product}">
 
-    <div class="mb-3">
-        <label for="inputBrand" class="form-label">Brand</label>
-        <input type="text" class="form-control" id="inputBrand" name="brand" th:field="*{brand}">
+                <input type="hidden" name="productId" th:field="*{productId}">
+
+                <div class="mb-3">
+                    <label for="inputBrand" class="form-label">Brand</label>
+                    <input type="text" class="form-control" id="inputBrand" name="brand" th:field="*{brand}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputMileage" class="form-label">Mileage</label>
+                    <input type="text" class="form-control" id="inputMileage" name="mileage" th:field="*{mileage}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputPrice" class="form-label">Price</label>
+                    <input type="text" class="form-control" id="inputPrice" name="price" th:field="*{price}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputDescription" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="inputDescription" name="description"
+                           th:field="*{description}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputQuantity" class="form-label">Quantity</label>
+                    <input type="text" class="form-control" id="inputQuantity" name="quantity" th:field="*{quantity}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputImagineUrl" class="form-label">ImagineUrl</label>
+                    <input type="text" class="form-control" id="inputImagineUrl" name="imagineUrl"
+                           th:field="*{imagineUrl}">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+
+
+        </div>
     </div>
-
-    <div class="mb-3">
-        <label for="inputMileage" class="form-label">Mileage</label>
-        <input type="text" class="form-control" id="inputMileage" name="mileage" th:field="*{mileage}">
-    </div>
-
-    <div class="mb-3">
-        <label for="inputPrice" class="form-label">Price</label>
-        <input type="text" class="form-control" id="inputPrice" name="price" th:field="*{price}">
-    </div>
-
-    <div class="mb-3">
-        <label for="inputDescription" class="form-label">Description</label>
-        <input type="text" class="form-control" id="inputDescription" name="description" th:field="*{description}">
-    </div>
-
-    <div class="mb-3">
-        <label for="inputQuantity" class="form-label">Quantity</label>
-        <input type="text" class="form-control" id="inputQuantity" name="quantity" th:field="*{quantity}">
-    </div>
-
-    <div class="mb-3">
-        <label for="inputImagineUrl" class="form-label">ImagineUrl</label>
-        <input type="text" class="form-control" id="inputImagineUrl" name="imagineUrl" th:field="*{imagineUrl}">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-
-</form>
+</div>
 
 <div class="fixed-bottom text-center p-3 bg-dark text-white">
     DAS Garage is a fictional company made only for Java learning purposes.

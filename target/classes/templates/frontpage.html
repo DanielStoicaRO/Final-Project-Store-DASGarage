@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FrontPage DasGarage</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-image: url('/imagines/backgroundFront.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .card:not(:last-child) {
+            margin-right: 10px;
+        }
+        .card {
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="text-center p-1 bg-dark text-white">
+    <h1>Welcome to "DAS Garage" by SDA Academy JavaRemote Ro21-2021 Team, Daniel Stoica</h1>
+</div>
+
+
+<div style="position: absolute; top: 100px !important; left: 0;">
+
+    <iframe src="https://www.meteoblue.com/en/weather/widget/daily/java_georgia_614217?geoloc=fixed&days=4&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&precipunit=MILLIMETER&coloured=monochrome&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&humidity=0&precipitation=0&precipitationprobability=0&precipitationprobability=1&spot=0&pressure=0&layout=light"
+            frameborder="0" scrolling="NO" allowtransparency="true"
+            sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
+            style="width: 216px; height: 420px"></iframe>
+
+</div>
+
+</div>
+
+<!--widgets curs valutar-->
+<div style="position: absolute; top: 100px; right: 0;">
+    <script type="text/javascript" language="javascript"
+            src="//cdn1.curs-valutar-bnr.ro/custom_widgets/get_widget.php?lw=230&rw=1&font=Trebuchet%20MS&cft=00b0ea&ctt=ffffff&ttb=0&cc=f2f2f2&cfb=ffffff&ct=000000&pd=4&pc=4&aiv=1&val[]=8&val[]=19&val[]=9&val[]=4&mf=14&avc=1&ac=1&aod=0&lang=ro"></script>
+    <span style="font-family:arial;font-size:11px;color:#a2a2a2">&nbsp; oferit de: <a
+            href="https://www.curs-valutar-bnr.ro"
+            title="Curs BNR"
+            style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
+</div>
+
+<a class="btn btn-primary" href="/product/add">Add Product</a>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="container">
+                <div class="row">
+                    <div class="card text-center" th:each="product:${stockList}" style="width: 18rem;">
+                        <img th:src="${product.imagineUrl}" class="card-img-top" alt="CarPictures">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${product.brand}"></h5>
+                            <p class="card-text" th:text="${product.description}"></p>
+                            <p class="card-text" th:text="${product.mileage} + ' KM' "></p>
+                            <p class="card-text" th:text="${product.price} + ' Price €' "></p>
+                            <p class="card-text" th:text="${product.quantity} + ' Units' "></p>
+
+                            <a th:href="@{'/product/view/' + ${product.productId}}" class="btn btn-primary">View</a>
+                            <a th:href="@{'/product/edit/' + ${product.productId}}" class="btn btn-primary">Edit</a>
+                            <a th:href="@{'/product/delete/' + ${product.productId}}" class="btn btn-primary">Delete</a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--        <div class="col-md-6"></div>-->
+    </div>
+</div>
+
+
+<!--<iframe src="https://www.cursbnr.ro/"></iframe>-->
+<div class="fixed-bottom text-center p-3 bg-dark text-white">
+    DAS Garage is a fictional company made only for Java learning purposes.
+    Terms and conditions don't apply, user discretion is advised.
+    Website by SDA Academy JavaRemote Ro21-2021 Team, Daniel Stoica
+</div>
+
+</body>
+</html>
+

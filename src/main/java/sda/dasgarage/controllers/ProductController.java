@@ -31,7 +31,7 @@ public class ProductController {
 
     @GetMapping("/product/add")
     public ModelAndView productAdd() {
-        ModelAndView modelAndView = new ModelAndView("productAdd");
+        ModelAndView modelAndView = new ModelAndView("productEdit");
         modelAndView.addObject("product", new ProductEntity());
         return modelAndView;
     }

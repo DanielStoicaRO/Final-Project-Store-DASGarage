@@ -17,31 +17,43 @@
             background-attachment: fixed;
             background-size: cover;
         }
+        .card:not(:last-child) {
+            margin-right: 10px;
+        }
+        .card {
+            margin-top: 10px;
+        }
     </style>
 
 </head>
 
 <body>
 
-<h1>Welcome to DAS Garage</h1>
+<div class="text-center p-1 bg-dark text-white">
+    <h1>Welcome to "DAS Garage" by SDA Academy JavaRemote Ro21-2021 Team, Daniel Stoica</h1>
+</div>
+
+
+<div style="position: absolute; top: 100px !important; left: 0;">
+
+    <iframe src="https://www.meteoblue.com/en/weather/widget/daily/java_georgia_614217?geoloc=fixed&days=4&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&precipunit=MILLIMETER&coloured=monochrome&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&humidity=0&precipitation=0&precipitationprobability=0&precipitationprobability=1&spot=0&pressure=0&layout=light"
+            frameborder="0" scrolling="NO" allowtransparency="true"
+            sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
+            style="width: 216px; height: 420px"></iframe>
 
 </div>
 
-<!--widgets weather cast-->
-<a class="weatherwidget-io" href="https://forecast7.com/en/44d4326d10/bucharest/" data-label_1="BUCHAREST"
-   data-label_2="WEATHER" data-theme="original">BUCHAREST WEATHER</a>
-<script>
-    !function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (!d.getElementById(id)) {
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://weatherwidget.io/js/widget.min.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }
-    }(document, 'script', 'weatherwidget-io-js');
-</script>
+</div>
 
+<!--widgets curs valutar-->
+<div style="position: absolute; top: 100px; right: 0;">
+    <script type="text/javascript" language="javascript"
+            src="//cdn1.curs-valutar-bnr.ro/custom_widgets/get_widget.php?lw=230&rw=1&font=Trebuchet%20MS&cft=00b0ea&ctt=ffffff&ttb=0&cc=f2f2f2&cfb=ffffff&ct=000000&pd=4&pc=4&aiv=1&val[]=8&val[]=19&val[]=9&val[]=4&mf=14&avc=1&ac=1&aod=0&lang=ro"></script>
+    <span style="font-family:arial;font-size:11px;color:#a2a2a2">&nbsp; oferit de: <a
+            href="https://www.curs-valutar-bnr.ro"
+            title="Curs BNR"
+            style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
+</div>
 
 <a class="btn btn-primary" href="/product/add">Add Product</a>
 
@@ -73,6 +85,7 @@
         <!--        <div class="col-md-6"></div>-->
     </div>
 </div>
+
 
 <!--<iframe src="https://www.cursbnr.ro/"></iframe>-->
 <div class="fixed-bottom text-center p-3 bg-dark text-white">
