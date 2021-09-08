@@ -11,7 +11,7 @@ public class ProductEntity {
     private Integer productId;
     private String brand;
     private String mileage;
-    private Double price;
+    private Integer price;
     private Integer quantity;
     private String description;
     private String imagineUrl;
@@ -60,11 +60,11 @@ public class ProductEntity {
         this.mileage = mileage;
     }
 
-    public Double getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

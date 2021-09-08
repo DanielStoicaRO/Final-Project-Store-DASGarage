@@ -13,40 +13,57 @@
 
     <style>
         body {
-            background-image: url('/imagines/background.jpg');
+            background-image: url('/imagines/backgroundView.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
         }
     </style>
 
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-radius: 10px;
-        }
-    </style>
+<!--    <style>-->
+<!--        table, th, td {-->
+<!--            border: 1px solid black;-->
+<!--            border-radius: 10px;-->
+<!--        }-->
+<!--    </style>-->
 </head>
 
 <body>
-<h1 th:text="${product.brand}"> </h1>
 
-<table style="border: black">
-    <tr>
-        <th>Id</th>
-        <th>Mileage</th>
-        <th>Quantity</th>
-        <th>Price</th>
-    </tr>
-    <tr>
-        <td th:text="${product.productId}"></td>
-        <td th:text="${product.mileage}"></td>
-        <td th:text="${product.price}"></td>
-        <td th:text="${product.quantity}"></td>
-        <td th:text="${product.description}"></td>
-        <td th:text="${product.imagineUrl}"></td>
-    </tr>
-</table>
+
+<div class="card text-center" style="width: 40rem;">
+
+    <img th:src="${product.imagineUrl}" class="card-img-top" alt="Car Pictures">
+    <div class="card-body">
+        <h5 class="card-title" th:text="${product.brand}">Card title</h5>
+        <p class="card-text" th:text="${product.description}"></p>
+        <p class="card-text" th:text="${product.mileage} + ' KM' "></p>
+        <p class="card-text" th:text="${product.price} + ' Price €' "></p>
+        <p class="card-text" th:text="${product.quantity} + ' Units' "></p>
+
+        <a href="/frontpage" class="btn btn-primary">Back</a>
+
+    </div>
+</div>
+
+
+<!--<h1 th:text="${product.brand}"> </h1>-->
+<!--<table style="border: black">-->
+<!--    <tr>-->
+<!--        <th>Id</th>-->
+<!--        <th>Mileage</th>-->
+<!--        <th>Quantity</th>-->
+<!--        <th>Price</th>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td th:text="${product.productId}"></td>-->
+<!--        <td th:text="${product.mileage}"></td>-->
+<!--        <td th:text="${product.price}"></td>-->
+<!--        <td th:text="${product.quantity}"></td>-->
+<!--        <td th:text="${product.description}"></td>-->
+<!--        <td th:text="${product.imagineUrl}"></td>-->
+<!--    </tr>-->
+<!--</table>-->
 
 <div class="fixed-bottom text-center p-3 bg-dark text-white">
     DAS Garage is a fictional company made only for Java learning purposes.
