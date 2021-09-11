@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DASGarage aboutUs</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-image: url('/imagines/backgroundView.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div style="width: 1320px;">-->
+<a class="weatherwidget-io" href="https://forecast7.com/en/44d4326d10/bucharest/" data-label_1="BUCHAREST"
+   data-label_2="WEATHER" data-theme="original">BUCHAREST WEATHER</a>
+<script>
+    !function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://weatherwidget.io/js/widget.min.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, 'script', 'weatherwidget-io-js');
+</script>
+<!--            <div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-light">
+    <div class="container-fluid img-fluid" style="margin-bottom: 10px;">
+        <img src="/imagines/dasgarageLogo.jpg" alt="/frontpage" width="130" height="100"
+             class="d-inline-block align-text-top">
+        <a class="navbar-brand text-dark" href="/frontpage">Welcome to "DAS Garage" by SDA Academy JavaRemote Ro21-2021 Team,
+            Daniel Stoica </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active text-dark" aria-current="page" href="/frontpage">[ Home ]</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/aboutUs">[ About Us ]</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#">[ Sign In ]</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark disabled">[ Shopping Basket ]</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!--widgets curs valutar-->
+<div style="position: absolute; top: 100px; right: 0;">
+    <script type="text/javascript" language="javascript"
+            src="//cdn1.curs-valutar-bnr.ro/custom_widgets/get_widget.php?lw=230&rw=1&font=Trebuchet%20MS&cft=00b0ea&ctt=ffffff&ttb=0&cc=f2f2f2&cfb=ffffff&ct=000000&pd=4&pc=4&aiv=1&val[]=8&val[]=19&val[]=9&val[]=4&mf=14&avc=1&ac=1&aod=0&lang=ro"></script>
+    <span style="font-family:arial;font-size:11px;color:#a2a2a2">&nbsp; oferit de: <a
+            href="https://www.curs-valutar-bnr.ro"
+            title="Curs BNR"
+            style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/imagines/conceptOwner.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/imagines/conceptOwner1.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/imagines/conceptOwner2.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--<div style="text-align: center;">-->
+<!--    <a href="/frontpage" class="btn btn-dark">Home</a>-->
+<!--</div>-->
+
+
+</body>
+</html>
