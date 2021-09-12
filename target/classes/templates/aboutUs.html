@@ -19,35 +19,13 @@
         }
     </style>
 
-
 </head>
 <body>
 
-<!--<div class="container">-->
-<!--    <div class="row">-->
-<!--        <div style="width: 1320px;">-->
-<a class="weatherwidget-io" href="https://forecast7.com/en/44d4326d10/bucharest/" data-label_1="BUCHAREST"
-   data-label_2="WEATHER" data-theme="original">BUCHAREST WEATHER</a>
-<script>
-    !function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (!d.getElementById(id)) {
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://weatherwidget.io/js/widget.min.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }
-    }(document, 'script', 'weatherwidget-io-js');
-</script>
-<!--            <div>-->
-<!--            </div>-->
-<!--        </div>-->
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-light">
-    <div class="container-fluid img-fluid" style="margin-bottom: 10px;">
-        <img src="/imagines/dasgarageLogo.jpg" alt="/frontpage" width="130" height="100"
-             class="d-inline-block align-text-top">
-        <a class="navbar-brand text-dark" href="/frontpage">Welcome to "DAS Garage" by SDA Academy JavaRemote Ro21-2021 Team,
+    <div class="container-fluid" style="margin-bottom: 10px;">
+        <img src="/imagines/dasgarageLogo.jpg" alt="" width="130" height="100" class="d-inline-block align-text-top">
+        <a class="navbar-brand text-dark" href="#">Welcome to "DAS Garage" by SDA Academy JavaRemote Ro21-2021 Team,
             Daniel Stoica </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,14 +43,21 @@
                     <a class="nav-link text-dark" href="#">[ Sign In ]</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link text-dark" href="/leasing">[ Leasing ]</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/product/add">[ Add product ]</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link text-dark disabled">[ Shopping Basket ]</a>
                 </li>
+
             </ul>
         </div>
     </div>
 </nav>
 
-
+<br>
 <!--widgets curs valutar-->
 <div style="position: absolute; top: 100px; right: 0;">
     <script type="text/javascript" language="javascript"
@@ -82,7 +67,6 @@
             title="Curs BNR"
             style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
 </div>
-
 
 <div class="container">
     <div class="row">
@@ -130,10 +114,12 @@
     </div>
 </div>
 
-<!--<div style="text-align: center;">-->
-<!--    <a href="/frontpage" class="btn btn-dark">Home</a>-->
-<!--</div>-->
-
+<br>
+<div class="fixed-bottom text-center p-2 bg-white text-dark">
+    DAS Garage is a fictional company made only for Java learning purposes.
+    Terms and conditions don't apply, user discretion is advised.
+    Website by SDA Academy JavaRemote Ro21-2021 Team, Daniel Stoica
+</div>
 
 </body>
 </html>
