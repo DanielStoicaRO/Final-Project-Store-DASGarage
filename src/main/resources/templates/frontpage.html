@@ -29,27 +29,8 @@
 </head>
 <body>
 
-<!--<div class="container">-->
-<!--    <div class="row">-->
-<!--        <div style="width: 1320px;">-->
-<a class="weatherwidget-io" href="https://forecast7.com/en/44d4326d10/bucharest/" data-label_1="BUCHAREST"
-   data-label_2="WEATHER" data-theme="original">BUCHAREST WEATHER</a>
-<script>
-    !function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (!d.getElementById(id)) {
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://weatherwidget.io/js/widget.min.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }
-    }(document, 'script', 'weatherwidget-io-js');
-</script>
-<!--            <div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-light">
+<br>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid" style="margin-bottom: 10px;">
         <img src="/imagines/dasgarageLogo.jpg" alt="" width="130" height="100" class="d-inline-block align-text-top">
         <a class="navbar-brand text-dark" href="#">Welcome to "DAS Garage" by SDA Academy JavaRemote Ro21-2021 Team,
@@ -58,28 +39,50 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active text-dark" aria-current="page" href="/frontpage">[ Home ]</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="/aboutUs">[ About Us ]</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">[ Sign In ]</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        [ Login ]
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">New User</a></li>
+                        <li><a class="dropdown-item" href="#">Existing User</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Admin</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark disabled">[ Shopping Basket ]</a>
+                    <a class="nav-link text-dark" href="/leasing">[ Leasing ]</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/product/add">[ Add product ]</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#">[ Buy a car ]</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark"
+                       href="https://www.accuweather.com/ro/ro/bucharest/287430/daily-weather-forecast/287430">[ Weather
+                        ]</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
-
+<br>
 <!--widgets curs valutar-->
-<div style="position: absolute; top: 100px; right: 0;">
+<div style="position: absolute; top: 120px; right: 50px;">
     <script type="text/javascript" language="javascript"
             src="//cdn1.curs-valutar-bnr.ro/custom_widgets/get_widget.php?lw=230&rw=1&font=Trebuchet%20MS&cft=00b0ea&ctt=ffffff&ttb=0&cc=f2f2f2&cfb=ffffff&ct=000000&pd=4&pc=4&aiv=1&val[]=8&val[]=19&val[]=9&val[]=4&mf=14&avc=1&ac=1&aod=0&lang=ro"></script>
     <span style="font-family:arial;font-size:11px;color:#a2a2a2">&nbsp; oferit de: <a
@@ -88,17 +91,25 @@
             style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
 </div>
 
-<a class="btn btn-dark" href="/product/add">Add Product</a>
-<a class="btn btn-dark" href="/aboutUs">About Us</a>
+<!--widgets weather-->
+<div style="position: absolute; top: 130px; left: 30px;">
+    <div id="wwo-weather-widget-4"></div>
+    <script type='text/javascript'
+            src='https://www.worldweatheronline.com/widget/v5/weather-widget.ashx?loc=2997066&wid=4&tu=1&div=wwo-weather-widget-4'
+            async></script>
+    <noscript><a href="https://www.worldweatheronline.com/spring-weather/central-java/id.aspx"
+                 alt="Hour by hour Spring, Central Java weather">Spring, Central Java weather forecast hourly</a>
+    </noscript>
+</div>
 
+<!--<a class="btn btn-dark" href="/product/add">Add Product</a>-->
 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-
             <div class="container">
                 <div class="row">
-                    <div class="card text-center" th:each="product:${stockList}" style="width: 19rem;">
+                    <div class="card text-center " th:each="product:${stockList}" style="width: 19rem;">
                         <img th:src="${product.imagineUrl}" class="card-img-top" alt="CarPictures">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product.brand}"></h5>
@@ -113,22 +124,16 @@
                                 <a th:href="@{'/product/delete/' + ${product.productId}}"
                                    class="btn btn-dark">Delete</a>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
-        <!--        <div class="col-md-6"></div>-->
     </div>
 </div>
 
-
-<!--<iframe src="https://www.cursbnr.ro/"></iframe>-->
-
-<div class="fixed-bottom text-center p-3 bg-dark text-white">
+<br>
+<div class=" text-center p-2 bg-white text-dark">
     DAS Garage is a fictional company made only for Java learning purposes.
     Terms and conditions don't apply, user discretion is advised.
     Website by SDA Academy JavaRemote Ro21-2021 Team, Daniel Stoica
