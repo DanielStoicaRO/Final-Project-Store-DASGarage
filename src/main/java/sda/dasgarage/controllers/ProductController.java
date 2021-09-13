@@ -23,9 +23,15 @@ public class ProductController {
     }
 
     @GetMapping("/frontpage")
-    public ModelAndView getFrontPage() {
+    public ModelAndView getFrontPage(String keyword) {
         ModelAndView modelAndView = new ModelAndView("frontpage");
-        modelAndView.addObject("stockList", productRepository.findAll());
+        //        search
+        if (keyword!= null){
+            modelAndView.addObject("stockList", productRepository.findByKeyword(keyword));
+        } else {
+            modelAndView.addObject("stockList", productRepository.findAll());
+            return modelAndView;
+        }
         return modelAndView;
     }
 
