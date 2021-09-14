@@ -23,6 +23,16 @@
             margin: auto;
             margin-top: 50px;
         }
+
+        #price {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #design {
+            font-size: 20px;
+            font-weight: bold;
+        }
     </style>
 
 </head>
@@ -51,11 +61,14 @@
 </div>
 
 <br>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav id="design" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid" style="margin-bottom: 10px;">
-        <img src="/imagines/dasgarageLogo.jpg" alt="" width="130" height="100" class="d-inline-block align-text-top">
-        <a class="navbar-brand text-dark" href="#">Welcome to "DAS Garage" by SDA Academy JavaRemote Ro21-2021 Team,
-            Daniel Stoica </a>
+        <a href="/frontpage">
+            <img src="/imagines/dasgarageLogo.jpg" alt="" width="130" height="100"
+                 class="d-inline-block align-text-top">
+        </a>
+        <a class="navbar-brand " href="/frontpage">Welcome to "DAS Garage" by SDA Academy JavaRemote Ro21-2021
+            Team, Daniel Stoica </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -63,10 +76,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active text-dark" aria-current="page" href="/frontpage">[ Home ]</a>
+                    <a class="nav-link  " aria-current="page" href="/frontpage">[ Home ]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="/aboutUs">[ About Us ]</a>
+                    <a class="nav-link " href="/aboutUs">[ About Us ]</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -83,17 +96,18 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="/leasing">[ Leasing ]</a>
+                    <a class="nav-link " href="/leasing">[ Leasing ]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="/product/add">[ Add product ]</a>
+                    <a class="nav-link " href="/product/add">[ Add product ]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">[ Shopping Basket ]</a>
+                    <a class="nav-link " href="#">[ Shopping Basket ]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark"
-                       href="https://www.accuweather.com/ro/ro/bucharest/287430/daily-weather-forecast/287430">[ Weather
+                    <a class="nav-link "
+                       href="https://www.accuweather.com/ro/ro/bucharest/287430/daily-weather-forecast/287430"
+                       th:target="_blank">[ Weather
                         ]</a>
                 </li>
             </ul>
@@ -107,7 +121,7 @@
         <h5 class="card-title" th:text="${product.brand}">Card title</h5>
         <p class="card-text" th:text="${product.description}"></p>
         <p class="card-text" th:text="${product.mileage} + ' KM' "></p>
-        <p class="card-text" th:text="${product.price} + ' Price €' "></p>
+        <p id="price" class="card-text" th:text="${product.price} + ' Price €' "></p>
         <p class="card-text" th:text="${product.quantity} + ' Units' "></p>
         <a href="/frontpage" class="btn btn-dark">Back</a>
 
