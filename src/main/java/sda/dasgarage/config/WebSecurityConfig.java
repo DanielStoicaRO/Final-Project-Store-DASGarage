@@ -1,6 +1,7 @@
 package sda.dasgarage.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,20 +17,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.authorizeRequests().antMatchers("/frontpage", "/login").permitAll();
+        http.authorizeRequests().antMatchers("/frontpage", "/login",
+                "/aboutUs", "/imagines/**", "/leasing", "/product/view/*", "/register").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
-        http.httpBasic();
+//        http.httpBasic();
+        http.formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/frontpage")
+                .failureUrl("/login");
+
         http.logout().logoutUrl("/logout").logoutSuccessUrl("/frontpage").deleteCookies("JSESSIONID").clearAuthentication(true).invalidateHttpSession(true);
     }
 
-    @Autowired
-    public void configureGlobalSecurity(AuthenticationManagerBuilder auth, DataSource dataSource) throws Exception {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    @Autowired
+    public void configureGlobalSecurity(AuthenticationManagerBuilder auth, DataSource dataSource, PasswordEncoder passwordEncoder) throws Exception {
 
         auth.jdbcAuthentication().passwordEncoder(passwordEncoder).dataSource(dataSource);
         System.out.println(passwordEncoder.encode("user"));
-
 
 
 //                .inMemoryAuthentication()
