@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Leasing</title>
@@ -9,7 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
             crossorigin="anonymous"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style>
@@ -24,6 +24,7 @@
             font-size: 20px;
             font-weight: bold;
         }
+
     </style>
 
 </head>
@@ -38,6 +39,15 @@
             href="https://www.curs-valutar-bnr.ro"
             title="Curs BNR"
             style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
+    <!--afisare username-->
+    <li>
+        <div>
+            <h4>
+                <a>Welcome</a>
+                <span sec:authentication="name"/>
+            </h4>
+        </div>
+    </li>
 </div>
 
 <!--widgets weather-->
@@ -72,7 +82,7 @@
                 <li class="nav-item">
                     <a class="nav-link " href="/aboutUs">[About Us]</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" sec:authorize="!isAuthenticated()">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         [Login]
@@ -87,13 +97,13 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/logout">[Logout]</a>
+                    <a class="nav-link " href="/logout" sec:authorize="isAuthenticated()">[Logout]</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active " href="/leasing">[Leasing]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/product/add">[Add product]</a>
+                    <a class="nav-link " href="/product/add" sec:authorize="hasAuthority('ADMIN')">[Add product]</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="#">[Shopping Basket]</a>
@@ -126,22 +136,16 @@
                     <div class="carousel-item active">
                         <img src="/imagines/leasing1.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <!--                            <h5>Oferta Speciala</h5>-->
-                            <!--                            <p>Avans 0% + Perioada Finantare pana la 60 Luni + Dobanda 0%.</p>-->
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="/imagines/leasing2.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <!--                            <h5>...</h5>-->
-                            <!--                            <p>...</p>-->
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="/imagines/leasing3.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <!--                            <h5>...</h5>-->
-                            <!--                            <p>...</p>-->
                         </div>
                     </div>
                 </div>
@@ -156,9 +160,17 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-
         </div>
     </div>
+</div>
+
+
+<div style="position: absolute; top: 450px; right: 60px;">
+    <br>
+    <img src="/imagines/callNow.gif"
+         data-deferred="1"  jsname="HiaYvf"
+         jsaction="load:XAeZkd;" class="n3VNCb" id="imi" data-w="578" data-h="134" data-atf="true"
+         data-iml="601.7000000011176" style="height: 72px; width: 311px; margin: 14px 0px;">
 </div>
 
 <br>

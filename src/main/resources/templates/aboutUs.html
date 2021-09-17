@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>DASGarage aboutUs</title>
@@ -36,6 +37,15 @@
             href="https://www.curs-valutar-bnr.ro"
             title="Curs BNR"
             style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
+    <!--afisare username-->
+    <li>
+        <div>
+            <h4>
+                <a>Welcome</a>
+                <span sec:authentication="name"/>
+            </h4>
+        </div>
+    </li>
 </div>
 
 <!--widgets weather-->
@@ -70,7 +80,7 @@
                 <li class="nav-item">
                     <a class="nav-link active " href="/aboutUs">[About Us]</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" sec:authorize="!isAuthenticated()">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         [Login]
@@ -85,13 +95,13 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/logout">[Logout]</a>
+                    <a class="nav-link " href="/logout" sec:authorize="isAuthenticated()">[Logout]</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="/leasing">[Leasing]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/product/add">[Add product]</a>
+                    <a class="nav-link " href="/product/add" sec:authorize="hasAuthority('ADMIN')">[Add product]</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="#">[Shopping Basket]</a>
