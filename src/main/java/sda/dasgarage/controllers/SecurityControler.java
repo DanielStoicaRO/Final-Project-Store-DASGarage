@@ -47,6 +47,7 @@ public class SecurityControler {
         userEntity.setCity(registerModel.getCity());
         userEntity.setAddress(registerModel.getAddress());
         userEntity.setEmailAddress(registerModel.getEmailAddress());
+
         userEntity.setEnabled(true);
         userRepository.save(userEntity);
 
