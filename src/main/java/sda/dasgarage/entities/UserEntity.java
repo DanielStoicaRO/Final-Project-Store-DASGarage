@@ -11,6 +11,34 @@ public class UserEntity {
 
     private String username;
     private String password;
+    private String city;
+    private String address;
+    private String emailAddress;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
     private Boolean enabled;
 
     public Integer getUserId() {

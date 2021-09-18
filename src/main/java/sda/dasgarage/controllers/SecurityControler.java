@@ -44,6 +44,9 @@ public class SecurityControler {
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(registerModel.getUsername());
         userEntity.setPassword(passwordEncoder.encode(registerModel.getPassword()));
+        userEntity.setCity(registerModel.getCity());
+        userEntity.setAddress(registerModel.getAddress());
+        userEntity.setEmailAddress(registerModel.getEmailAddress());
         userEntity.setEnabled(true);
         userRepository.save(userEntity);
 
