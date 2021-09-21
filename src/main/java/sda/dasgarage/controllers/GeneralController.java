@@ -11,10 +11,14 @@ public class GeneralController {
         return "contactUs";
     }
 
+
     @GetMapping("/leasing")
     public String getLeasing(){return "leasing";}
 
     @GetMapping("/testPage")
     public String getTesting(){return "testPage";}
+
+    @GetMapping("/cart")
+    public String getCart(){return "cart";}
 
 }

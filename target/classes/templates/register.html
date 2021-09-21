@@ -21,7 +21,7 @@
 
         .bg {
             animation:slide 3s ease-in-out infinite alternate;
-            background-image: linear-gradient(-60deg, blanchedalmond 50%, white 50%);
+            background-image: linear-gradient(-60deg, deepskyblue 50%, white 50%);
             bottom:0;
             left:-50%;
             opacity:.5;
@@ -171,22 +171,34 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Register New User</h1>
+
+            <h3>Register New User</h3>
             <form action="/register" method="post" th:object="${registerContainer}">
+                <div class="mb-3">
                 <label for="username">New Username</label>
                 <input id="username" name="username" type="text" th:field="*{username}">
-                <br>
+                </div>
+
+                <div class="mb-3">
                 <label for="password">New Password</label>
                 <input id="password" name="password" type="password" th:field="*{password}">
-                <br>
+                </div>
+
+                <div class="mb-3">
                 <label for="city">Input City</label>
                 <input id="city" name="city" type="text" th:field="*{city}">
-                <br>
+                </div>
+
+                <div class="mb-3">
                 <label for="address">Input Address</label>
                 <input id="address" name="address" type="text" th:field="*{address}">
-                <br>
+                </div>
+
+                <div class="mb-3">
                 <label for="emailAddress">Input Email Address</label>
                 <input id="emailAddress" name="emailAddress" type="email" th:field="*{emailAddress}">
+                </div>
+
                 <br>
                 <input type="submit">
             </form>

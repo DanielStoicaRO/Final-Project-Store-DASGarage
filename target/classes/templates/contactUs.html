@@ -22,7 +22,7 @@
 
         .bg {
             animation: slide 3s ease-in-out infinite alternate;
-            background-image: linear-gradient(-60deg, blanchedalmond 50%, white 50%);
+            background-image: linear-gradient(-60deg, deepskyblue 50%, white 50%);
             bottom: 0;
             left: -50%;
             opacity: .5;
@@ -58,7 +58,7 @@
             font-size: 20px;
             font-weight: bold;
         }
-        
+
         .header {
             background-color: #F5F5F5;
             color: #36A0FF;
@@ -66,6 +66,131 @@
             font-size: 27px;
             padding: 10px;
         }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #108d6f;
+            border-color: #108d6f;
+            box-shadow: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #305891;
+            border-color: #305893;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        section .section-title {
+            text-align: center;
+            color: #305893;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        #team .card {
+            border: none;
+            background: #ffffff;
+        }
+
+        .image-flip:hover .backside,
+        .image-flip.hover .backside {
+            -webkit-transform: rotateY(0deg);
+            -moz-transform: rotateY(0deg);
+            -o-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+            border-radius: .25rem;
+        }
+
+        .image-flip:hover .frontside,
+        .image-flip.hover .frontside {
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .mainflip {
+            -webkit-transition: 1s;
+            -webkit-transform-style: preserve-3d;
+            -ms-transition: 1s;
+            -moz-transition: 1s;
+            -moz-transform: perspective(1000px);
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transition: 1s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .frontside {
+            position: relative;
+            -webkit-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            z-index: 2;
+            margin-bottom: 30px;
+        }
+
+        .backside {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: white;
+            -webkit-transform: rotateY(-180deg);
+            -moz-transform: rotateY(-180deg);
+            -o-transform: rotateY(-180deg);
+            -ms-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+            -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+            -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+            box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+        }
+
+        .frontside,
+        .backside {
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transition: 1s;
+            -webkit-transform-style: preserve-3d;
+            -moz-transition: 1s;
+            -moz-transform-style: preserve-3d;
+            -o-transition: 1s;
+            -o-transform-style: preserve-3d;
+            -ms-transition: 1s;
+            -ms-transform-style: preserve-3d;
+            transition: 1s;
+            transform-style: preserve-3d;
+        }
+
+        .frontside .card,
+        .backside .card {
+            min-height: 312px;
+        }
+
+        .backside .card a {
+            font-size: 18px;
+            color: #305893 !important;
+        }
+
+        .frontside .card .card-title,
+        .backside .card .card-title {
+            color: #305893 !important;
+        }
+
+        .frontside .card .card-body img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+        }
+
+
     </style>
 
 </head>
@@ -128,7 +253,7 @@
                     <a class="nav-link active " aria-current="page" href="/frontpage">[Home]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/contactUs">[Contact Us]</a>
+                    <a class="nav-link" href="/contactUs">[Contact Us]</a>
                 </li>
                 <li class="nav-item dropdown" sec:authorize="!isAuthenticated()">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -179,14 +304,186 @@
     </div>
 </nav>
 
-<br>
+<!--OUR TEAM-->
+<section id="team" class="pb-5">
+    <div class="container">
+        <h5 class="section-title h1">OUR TEAM</h5>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p>
+                                        <img class=" img-fluid" alt="Team Cards Flipper"
+                                             src="/imagines/pozaDAS.jpg"/>
+                                    </p>
+                                    <h4 class="card-title">Junior Java Developer</h4>
+                                    <p class="card-text">Full Stack Java Developer courses by SD Academy</p>
+                                    <a href="#" class="btn btn-primary btn-sm">More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Junior Java Developer</h4>
+                                    <p class="card-text">A software developer passionate opened for a new professional
+                                        challenge and ready to take on responsibilities. Reliable team member always
+                                        ready to help. Quick learner with problem-solving and decision-making mindset,
+                                        and excellent interpersonal skills, I am seeking to be employed in a company
+                                        with
+                                        strong organizational culture, where I can add value using my skills and my
+                                        previous professional experience.</p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href=" #">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-skype"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-google"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p>
+
+
+                                        <img class=" img-fluid" alt="Team Cards Flipper"
+                                             src="imagines/pozaSDA.jpg"/>
+                                    </p>
+                                    <h4 class="card-title">SDA Academy 2021</h4>
+                                    <p class="card-text">Java Remote RO21 Team</p>
+                                    <a href="#" class="btn btn-primary btn-sm">More</a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">SDA Academy 2021</h4>
+                                    <p class="card-text">Java Remote RO21 Team.
+                                        #Java Advanced Features #Design Patterns & Good Practices #MYSQL #JDBC &
+                                        Hibernate #HTML, CSS #JavaScript basic #Java Spring Framework #GIT #Software
+                                        Testing and Practical Projects #Windows #IOS</p>
+
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-skype"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-google"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p>
+                                        <img class=" img-fluid" alt="Team Cards Flipper"
+                                             src="imagines/pozaCAC.jpg"/>
+                                    </p>
+                                    <h4 class="card-title">Final Project Trainer</h4>
+                                    <p class="card-text">Cristian Ando Ciupav</p>
+                                    <a href="#" class="btn btn-primary btn-sm">More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Final Project Trainer</h4>
+                                    <p class="card-text">Cristi is one of the greatest Java developers I've ever met! He
+                                        is taking care of all aspects like performance, code quality, architecture and
+                                        design. I learned many things that I did not understand in the previous modules.
+                                        Overall it was a great experience to work with him during final project.</p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-skype"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-google"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--contact us-->
 <div class="container">
     <div class="row">
         <div class="col-md-6">
             <div class="well well-sm">
-                <form class="form-horizontal" method="post">
+                <form class="form-horizontal" method="post" action="/contactUs">
                     <fieldset>
-                        <legend class="text-center header">Contact us</legend>
+                        <legend class="text-center text-dark header">Contact us</legend>
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
                                 <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
@@ -219,11 +516,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-dark btn-lg">Submit</button>
-                            </div>
-                        </div>
+<!--                        <div class="form-group">-->
+<!--                            <div class="col-md-10 text-center">-->
+<!--                                <button type="submit" class="btn btn-light text-dark btn-lg">Submit</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
                     </fieldset>
                 </form>
             </div>
@@ -231,7 +529,7 @@
         <div class="col-md-6">
             <div>
                 <div class="panel panel-default">
-                    <div class="text-center header">Our Office</div>
+                    <div class="text-center text-dark header">Our Office</div>
                     <div class="panel-body text-center">
                         <h4>Address</h4>
                         <div>
@@ -249,8 +547,6 @@
         </div>
     </div>
 </div>
-
-
 
 <br>
 <div class="fixed-bottom text-center p-2 bg-white text-dark">

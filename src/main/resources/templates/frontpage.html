@@ -21,7 +21,7 @@
 
         .bg {
             animation: slide 3s ease-in-out infinite alternate;
-            background-image: linear-gradient(-60deg, blanchedalmond 50%, white 50%);
+            background-image: linear-gradient(-60deg, deepskyblue 50%, white 50%);
             bottom: 0;
             left: -50%;
             opacity: .5;
@@ -52,6 +52,7 @@
                 transform: translateX(25%);
             }
         }
+
 
         .card:not(:last-child) {
             margin-right: 10px;
@@ -119,11 +120,11 @@
                 <li class="nav-item">
                     <a class="nav-link " href="/leasing">[Leasing]</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" sec:authorize="hasAuthority('ADMIN')" href="/product/add">[Add product]</a>
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a class="nav-link" href="/product/add">[Add product]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">[Shopping Basket]</a>
+                    <a class="nav-link " href="/get-cart">[Shopping Cart]</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link "
@@ -202,13 +203,10 @@
                             <div>
                                 <a th:href="@{'/product/view/' + ${product.productId}}" class="btn btn-dark">View</a>
 
-                                <a th:href="@{'/product/view/' + ${product.productId}}" class="btn btn-dark">Buy</a>
-
-                                <a th:href="@{'/product/edit/' + ${product.productId}}" class="btn btn-dark"
-                                   sec:authorize="hasAuthority('ADMIN')">Edit</a>
-                                <a th:href="@{'/product/delete/' + ${product.productId}}" class="btn btn-dark"
-                                   sec:authorize="hasAuthority('ADMIN')">Delete</a>
+                                <a th:href="@{'/add-cart/' + ${product.productId}}" class="btn btn-dark"
+                                   sec:authorize="hasAuthority('USER')">Buy</a>
                             </div>
+
                         </div>
                     </div>
                 </div>

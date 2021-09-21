@@ -21,7 +21,7 @@
 
         .bg {
             animation:slide 3s ease-in-out infinite alternate;
-            background-image: linear-gradient(-60deg, blanchedalmond 50%, white 50%);
+            background-image: linear-gradient(-60deg, deepskyblue 50%, white 50%);
             bottom:0;
             left:-50%;
             opacity:.5;
@@ -169,7 +169,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <form action="/product/save" method="post" th:object="${product}">
+            <form action="/product/save" enctype="multipart/form-data" method="post" th:object="${product}">
                 <input type="hidden" name="productId" th:field="*{productId}">
 
                 <div class="mb-3">
@@ -198,11 +198,18 @@
                     <input type="text" class="form-control" id="inputQuantity" name="quantity" th:field="*{quantity}">
                 </div>
 
+<!--                uploadFile-->
                 <div class="mb-3">
-                    <label for="inputImagineUrl" class="form-label">ImagineUrl</label>
-                    <input type="text" class="form-control" id="inputImagineUrl" name="imagineUrl"
-                           th:field="*{imagineUrl}">
+<!--                    <label for="inputImagineUrl" class="form-label">ImagineUrl</label>-->
+<!--                    <input type="text" class="form-control" id="inputImagineUrl" name="imagineUrl" th:readonly="true"-->
+<!--                           th:field="*{imagineUrl}">-->
+                    <input type="hidden" name="imagineUrl"  th:field="*{imagineUrl}">
+                    <img th:src="${product.imagineUrl}">
+
                 </div>
+                <br>
+                <input type="file" name="file">
+                <br>
 
                 <button type="submit" class="btn btn-dark">Submit</button>
                 <a href="/frontpage" class="btn btn-dark">Back</a>
