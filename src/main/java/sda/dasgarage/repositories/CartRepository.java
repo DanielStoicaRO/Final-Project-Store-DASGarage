@@ -10,4 +10,7 @@ import java.util.List;
 public interface CartRepository extends JpaRepository<CartEntity, Integer> {
 
     List<CartEntity> findAllByUser_Username(String username);
+
+//    4cart count
+    Long countAllByUserId(Integer userId);
 }

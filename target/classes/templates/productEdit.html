@@ -12,44 +12,44 @@
 
     <style>
         html {
-            height:100%;
+            height: 100%;
         }
 
         body {
-            margin:0;
+            margin: 0;
         }
 
         .bg {
-            animation:slide 3s ease-in-out infinite alternate;
+            animation: slide 3s ease-in-out infinite alternate;
             background-image: linear-gradient(-60deg, deepskyblue 50%, white 50%);
-            bottom:0;
-            left:-50%;
-            opacity:.5;
-            position:fixed;
-            right:-50%;
-            top:0;
-            z-index:-1;
+            bottom: 0;
+            left: -50%;
+            opacity: .5;
+            position: fixed;
+            right: -50%;
+            top: 0;
+            z-index: -1;
         }
 
         .bg2 {
-            animation-direction:alternate-reverse;
-            animation-duration:4s;
+            animation-direction: alternate-reverse;
+            animation-duration: 4s;
         }
 
         .bg3 {
-            animation-duration:5s;
+            animation-duration: 5s;
         }
 
         h1 {
-            font-family:monospace;
+            font-family: monospace;
         }
 
         @keyframes slide {
             0% {
-                transform:translateX(-25%);
+                transform: translateX(-25%);
             }
             100% {
-                transform:translateX(25%);
+                transform: translateX(25%);
             }
         }
 
@@ -71,28 +71,7 @@
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
 
-<br>
-<!--widgets curs valutar-->
-<div style="position: absolute; top: 120px; right: 50px;">
-    <script type="text/javascript" language="javascript"
-            src="//cdn1.curs-valutar-bnr.ro/custom_widgets/get_widget.php?lw=230&rw=1&font=Trebuchet%20MS&cft=00b0ea&ctt=ffffff&ttb=0&cc=f2f2f2&cfb=ffffff&ct=000000&pd=4&pc=4&aiv=1&val[]=8&val[]=19&val[]=9&val[]=4&mf=14&avc=1&ac=1&aod=0&lang=ro"></script>
-    <span style="font-family:arial;font-size:11px;color:#a2a2a2">&nbsp; oferit de: <a
-            href="https://www.curs-valutar-bnr.ro"
-            title="Curs BNR"
-            style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
-</div>
-
-<!--widgets weather-->
-<div style="position: absolute; top: 130px; left: 30px;">
-    <div id="wwo-weather-widget-4"></div>
-    <script type='text/javascript'
-            src='https://www.worldweatheronline.com/widget/v5/weather-widget.ashx?loc=2997066&wid=4&tu=1&div=wwo-weather-widget-4'
-            async></script>
-    <noscript><a href="https://www.worldweatheronline.com/spring-weather/central-java/id.aspx"
-                 alt="Hour by hour Spring, Central Java weather">Spring, Central Java weather forecast hourly</a>
-    </noscript>
-</div>
-
+<!--navbar-->
 <br>
 <nav id="design" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid" style="margin-bottom: 10px;">
@@ -111,10 +90,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active " aria-current="page" href="/frontpage">[Home]</a>
+                    <a class="nav-link" aria-current="page" href="/frontpage">[Home]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/contactUs">[Contact Us]</a>
+                    <a class="nav-link" href="/contactUs">[Contact Us]</a>
                 </li>
                 <li class="nav-item dropdown" sec:authorize="!isAuthenticated()">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -133,11 +112,11 @@
                 <li class="nav-item">
                     <a class="nav-link " href="/leasing">[Leasing]</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" sec:authorize="hasAuthority('ADMIN')" href="/product/add">[Add product]</a>
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a class="nav-link" href="/product/add">[Add product]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">[Shopping Basket]</a>
+                    <a class="nav-link " href="/get-cart">[Shopping Cart]</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link "
@@ -164,6 +143,37 @@
         </div>
     </div>
 </nav>
+<br>
+<!--widgets curs valutar-->
+<div style="position: absolute; top: 120px; right: 50px;">
+    <script type="text/javascript" language="javascript"
+            src="//cdn1.curs-valutar-bnr.ro/custom_widgets/get_widget.php?lw=230&rw=1&font=Trebuchet%20MS&cft=00b0ea&ctt=ffffff&ttb=0&cc=f2f2f2&cfb=ffffff&ct=000000&pd=4&pc=4&aiv=1&val[]=8&val[]=19&val[]=9&val[]=4&mf=14&avc=1&ac=1&aod=0&lang=ro"></script>
+    <span style="font-family:arial;font-size:11px;color:#a2a2a2">&nbsp; oferit de: <a
+            href="https://www.curs-valutar-bnr.ro"
+            title="Curs BNR"
+            style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
+
+    <!--afisare username-->
+    <div sec:authorize="isAuthenticated()">
+        <img src="/imagines/userLogo.jpg" alt="" width="90" height="50"
+             class="d-inline-block align-text-top">
+
+        <h3 style="color:black" sec:autorize="hasAnyAuthority('ADMIN', 'USER')" id="welcome">
+            Welcome <span sec:authentication="name"/>!
+        </h3>
+    </div>
+</div>
+<!--widgets weather-->
+<div style="position: absolute; top: 130px; left: 30px;">
+    <div id="wwo-weather-widget-4"></div>
+    <script type='text/javascript'
+            src='https://www.worldweatheronline.com/widget/v5/weather-widget.ashx?loc=2997066&wid=4&tu=1&div=wwo-weather-widget-4'
+            async></script>
+    <noscript><a href="https://www.worldweatheronline.com/spring-weather/central-java/id.aspx"
+                 alt="Hour by hour Spring, Central Java weather">Spring, Central Java weather forecast hourly</a>
+    </noscript>
+
+</div>
 
 <div class="container">
     <div class="row">
@@ -198,12 +208,12 @@
                     <input type="text" class="form-control" id="inputQuantity" name="quantity" th:field="*{quantity}">
                 </div>
 
-<!--                uploadFile-->
+                <!--                uploadFile-->
                 <div class="mb-3">
-<!--                    <label for="inputImagineUrl" class="form-label">ImagineUrl</label>-->
-<!--                    <input type="text" class="form-control" id="inputImagineUrl" name="imagineUrl" th:readonly="true"-->
-<!--                           th:field="*{imagineUrl}">-->
-                    <input type="hidden" name="imagineUrl"  th:field="*{imagineUrl}">
+                    <!--                    <label for="inputImagineUrl" class="form-label">ImagineUrl</label>-->
+                    <!--                    <input type="text" class="form-control" id="inputImagineUrl" name="imagineUrl" th:readonly="true"-->
+                    <!--                           th:field="*{imagineUrl}">-->
+                    <input type="hidden" name="imagineUrl" th:field="*{imagineUrl}">
                     <img th:src="${product.imagineUrl}">
 
                 </div>

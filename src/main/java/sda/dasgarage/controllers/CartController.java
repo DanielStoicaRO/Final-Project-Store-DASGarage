@@ -14,7 +14,6 @@ import sda.dasgarage.repositories.CartRepository;
 import sda.dasgarage.repositories.UserRepository;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -40,18 +39,19 @@ public class CartController {
     }
 
     @GetMapping("/get-cart")
-    public ModelAndView getCard() {
-        ModelAndView modelAndView = new ModelAndView("cart");
+    public ModelAndView getCart() {
+        ModelAndView modelAndView = new ModelAndView("/cart");
         Optional<User> user = getLoggedInUser();
+
         if (user.isPresent()) {
             modelAndView.addObject("cart", cartRepository.findAllByUser_Username(user.get().getUsername()));
+
         } else {
             modelAndView.addObject("cart", new ArrayList<>());
         }
         return modelAndView;
     }
 
-    //    Homework
     @GetMapping("/delete-cart/{id}")
     public ModelAndView deleteCard(@PathVariable Integer id) {
         Optional<CartEntity> cartEntity = cartRepository.findById(id);
@@ -64,7 +64,6 @@ public class CartController {
         return modelAndView;
     }
 
-    //    Homework
     @GetMapping("/add-cart/{id}")
     public ModelAndView addCard(@PathVariable Integer id, CartEntity cartEntity) {
         ModelAndView modelAndView = new ModelAndView("redirect:/frontpage");
@@ -81,6 +80,4 @@ public class CartController {
         }
         return modelAndView;
     }
-
-
 }

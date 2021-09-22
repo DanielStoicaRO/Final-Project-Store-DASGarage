@@ -71,6 +71,11 @@
             font-size: 20px;
             font-weight: bold;
         }
+
+        #welcome {
+            font-style: oblique;
+            font-size: 30px;
+        }
     </style>
 
 </head>
@@ -80,6 +85,7 @@
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
 
+<!--navbar-->
 <br>
 <nav id="design" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid" style="margin-bottom: 10px;">
@@ -88,7 +94,7 @@
             <img src="/imagines/dasgarageLogo.jpg" alt="" width="130" height="100"
                  class="d-inline-block align-text-top">
         </a>
-        <a class="navbar-brand " href="/frontpage">"Welcome to DAS Garage" by SDA Academy JavaRemote Ro21-2021
+        <a class="navbar-brand" href="/frontpage">"Welcome to DAS Garage" by SDA Academy JavaRemote Ro21-2021
             Team, Daniel Stoica </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -98,7 +104,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active " aria-current="page" href="/frontpage">[Home]</a>
+                    <a class="nav-link active" aria-current="page" href="/frontpage">[Home]</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="/contactUs">[Contact Us]</a>
@@ -111,7 +117,6 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/register">New User</a></li>
                         <li><a class="dropdown-item" href="/login">Existing User</a></li>
-
                     </ul>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
@@ -124,7 +129,10 @@
                     <a class="nav-link" href="/product/add">[Add product]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/get-cart">[Shopping Cart]</a>
+
+                    <!--                    count shopping cart-->
+                    <a class="nav-link" sec:authorize="hasAuthority('USER')" href="/get-cart">[Shopping Cart](<span
+                            th:text="${cartSize} + ' product'"></span>)</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link "
@@ -151,8 +159,8 @@
         </div>
     </div>
 </nav>
-
 <br>
+
 <!--widgets curs valutar-->
 <div style="position: absolute; top: 120px; right: 50px;">
     <script type="text/javascript" language="javascript"
@@ -163,14 +171,14 @@
             style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
 
     <!--afisare username-->
-    <li>
-        <div>
-            <h4>
-                <a>Welcome</a>
-                <span sec:authentication="name"/>
-            </h4>
-        </div>
-    </li>
+    <div sec:authorize="isAuthenticated()">
+        <img src="/imagines/userLogo.jpg" alt="" width="90" height="50"
+             class="d-inline-block align-text-top">
+
+        <h3 style="color:black" sec:autorize="hasAnyAuthority('ADMIN', 'USER')" id="welcome">
+            Welcome <span sec:authentication="name"/>!
+        </h3>
+    </div>
 </div>
 
 <!--widgets weather-->
@@ -184,7 +192,6 @@
     </noscript>
 
 </div>
-
 
 <div class="container">
     <div class="row">

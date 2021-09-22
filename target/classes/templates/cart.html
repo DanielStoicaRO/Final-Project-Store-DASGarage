@@ -10,53 +10,54 @@
             integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
             crossorigin="anonymous"></script>
 
-<style>
-    html {
-        height: 100%;
-    }
-
-    body {
-        margin: 0;
-    }
-
-    .bg {
-        animation: slide 3s ease-in-out infinite alternate;
-        background-image: linear-gradient(-60deg, deepskyblue 50%, white 50%);
-        bottom: 0;
-        left: -50%;
-        opacity: .5;
-        position: fixed;
-        right: -50%;
-        top: 0;
-        z-index: -1;
-    }
-
-    .bg2 {
-        animation-direction: alternate-reverse;
-        animation-duration: 4s;
-    }
-
-    .bg3 {
-        animation-duration: 5s;
-    }
-
-    h1 {
-        font-family: monospace;
-    }
-
-    @keyframes slide {
-        0% {
-            transform: translateX(-25%);
+    <style>
+        html {
+            height: 100%;
         }
-        100% {
-            transform: translateX(25%);
+
+        body {
+            margin: 0;
         }
-    }
-    #design {
-        font-size: 20px;
-        font-weight: bold;
-    }
-</style>
+
+        .bg {
+            animation: slide 3s ease-in-out infinite alternate;
+            background-image: linear-gradient(-60deg, deepskyblue 50%, white 50%);
+            bottom: 0;
+            left: -50%;
+            opacity: .5;
+            position: fixed;
+            right: -50%;
+            top: 0;
+            z-index: -1;
+        }
+
+        .bg2 {
+            animation-direction: alternate-reverse;
+            animation-duration: 4s;
+        }
+
+        .bg3 {
+            animation-duration: 5s;
+        }
+
+        h1 {
+            font-family: monospace;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-25%);
+            }
+            100% {
+                transform: translateX(25%);
+            }
+        }
+
+        #design {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
 
 </head>
 <body>
@@ -64,6 +65,7 @@
 <div class="bg"></div>
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
+
 <!--navbar-->
 <br>
 <nav id="design" class="navbar navbar-expand-lg navbar-light bg-light">
@@ -83,10 +85,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/frontpage">[Home]</a>
+                    <a class="nav-link active" aria-current="page" href="/frontpage">[Home]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/contactUs">[Contact Us]</a>
+                    <a class="nav-link " href="/contactUs">[Contact Us]</a>
                 </li>
                 <li class="nav-item dropdown" sec:authorize="!isAuthenticated()">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -96,7 +98,6 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/register">New User</a></li>
                         <li><a class="dropdown-item" href="/login">Existing User</a></li>
-
                     </ul>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
@@ -109,12 +110,31 @@
                     <a class="nav-link" href="/product/add">[Add product]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/cart">[Shopping Cart]</a>
+
+                    <!--                    count shopping cart-->
+                    <a class="nav-link" sec:authorize="hasAuthority('USER')" href="/get-cart">[Shopping Cart](<span
+                            th:text="${cartSize} + ' product'"></span>)</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link "
                        href="https://www.accuweather.com/ro/ro/bucharest/287430/daily-weather-forecast/287430"
                        th:target="_blank">[Weather]</a>
+                </li>
+
+                <!--               search-->
+                <li>
+                    <div id="search bar" class="col-sm">
+                        <script type="text/javascript">
+                            function clearSearch() {
+                                window.location = "[[@{/frontpage}]]";
+                            }
+                        </script>
+                        <form th:action="@{/frontpage}" method="get">
+                            <input type="text" name="keyword" id="keyword" size="20" th:value="${keyword}" required/>
+                            <input type="submit" value="Search"/>
+                            <input type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
+                        </form>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -129,49 +149,53 @@
             href="https://www.curs-valutar-bnr.ro"
             title="Curs BNR"
             style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
-
-    <!--afisare username-->
-    <li>
-        <div>
-            <h4>
-                <a>Welcome</a>
-                <span sec:authentication="name"/>
-            </h4>
-        </div>
-    </li>
 </div>
-<!--&lt;!&ndash;widgets weather&ndash;&gt;-->
-<!--<div style="position: absolute; top: 130px; left: 30px;">-->
-<!--    <div id="wwo-weather-widget-4"></div>-->
-<!--    <script type='text/javascript'-->
-<!--            src='https://www.worldweatheronline.com/widget/v5/weather-widget.ashx?loc=2997066&wid=4&tu=1&div=wwo-weather-widget-4'-->
-<!--            async></script>-->
-<!--    <noscript><a href="https://www.worldweatheronline.com/spring-weather/central-java/id.aspx"-->
-<!--                 alt="Hour by hour Spring, Central Java weather">Spring, Central Java weather forecast hourly</a>-->
-<!--    </noscript>-->
 
-<!--</div>-->
+<!--widgets weather-->
+<div style="position: absolute; top: 130px; left: 30px;">
+    <div id="wwo-weather-widget-4"></div>
+    <script type='text/javascript'
+            src='https://www.worldweatheronline.com/widget/v5/weather-widget.ashx?loc=2997066&wid=4&tu=1&div=wwo-weather-widget-4'
+            async></script>
+    <noscript><a href="https://www.worldweatheronline.com/spring-weather/central-java/id.aspx"
+                 alt="Hour by hour Spring, Central Java weather">Spring, Central Java weather forecast hourly</a>
+    </noscript>
+
+</div>
 
 
 <!--shooping cart-->
-<table>
-    <tr th:each="c:${cart}">
-        <td th:text="${c.product.brand}"></td>
-        <td th:text="${c.quantity}"></td>
-        <td>
-            <a th:href="@{${'/delete-cart/' + c.cartId}}">Delete</a>
-        </td>
-    </tr>
-</table>
+<div class="container">
+    <!--afisare username-->
+    <h3 style="color:black" sec:autorize="hasAnyAuthority('ADMIN', 'USER')" id="welcome">
+         <span sec:authentication="name"/> ...pay Cash or Leasing?
+    </h3>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="row">
 
+                    <div class="card text-center" th:each="c:${cart}" style="width: 19rem;">
+                        <img th:src="${c.product.imagineUrl}">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${c.product.brand}"></h5>
 
+                            <p class="card-text" th:text="${c.product.price} + ' €'"></p>
 
+                            <p class="card-text" th:text="${c.quantity}"></p>
 
-<br>
-<div class="fixed-bottom text-center p-2 bg-white text-dark">
-    DAS Garage is a fictional company made only for Java learning purposes.
-    Terms and conditions don't apply, user discretion is advised.
-    Website by SDA Academy JavaRemote Ro21-2021 Team, Daniel Stoica
-</div>
+                            <a th:href="@{${'/delete-cart/' + c.cartId}}" class="btn btn-dark">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="fixed-bottom text-center p-2 bg-white text-dark">
+        DAS Garage is a fictional company made only for Java learning purposes.
+        Terms and conditions don't apply, user discretion is advised.
+        Website by SDA Academy JavaRemote Ro21-2021 Team, Daniel Stoica
+    </div>
 </body>
 </html>
