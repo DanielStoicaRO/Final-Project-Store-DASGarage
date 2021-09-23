@@ -199,21 +199,9 @@
            sec:authorize="hasAuthority('ADMIN')">Edit</a>
         <a th:href="@{'/product/delete/' + ${product.productId}}" class="btn btn-dark"
            sec:authorize="hasAuthority('ADMIN')">Delete</a>
+        <a class="btn btn-dark" href="/leasing">Leasing</a>
 
     </div>
-</div>
-
-<div class="card card-custom text-center" style="width: 40rem;">
-    <figure class="figure ">
-        <img src="/imagines/leasing.jpg" class="figure-img img-fluid rounded" alt="BuyLeasing">
-        <figcaption class="figure-caption">Leasing avantajos
-            Pentru a face posibila revenirea economiei romanesti, resursele programului pentru sustinerea producatorilor
-            romani vor fi directionate catre sectoarele cu valoare adaugata in economie, companii romanesti, care produc
-            bunuri finantabile in leasing financiar din domeniile agricultura, constructii, auto si transporturi, cu
-            ponderi foarte importante in economie.
-        </figcaption>
-        <a class="btn btn-dark" href="/leasing">Buy Leasing</a>
-    </figure>
 </div>
 
 <br>

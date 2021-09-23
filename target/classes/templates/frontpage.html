@@ -172,8 +172,10 @@
 
     <!--afisare username-->
     <div sec:authorize="isAuthenticated()">
-        <img src="/imagines/userLogo.jpg" alt="" width="90" height="50"
-             class="d-inline-block align-text-top">
+        <img class="img-circle" src="/imagines/userLogo.jpg" width="90" height="50">
+
+<!--        <img src="/imagines/userLogo.jpg"  width="90" height="50"-->
+<!--             class="d-inline-block align-text-top">-->
 
         <h3 style="color:black" sec:autorize="hasAnyAuthority('ADMIN', 'USER')" id="welcome">
             Welcome <span sec:authentication="name"/>!

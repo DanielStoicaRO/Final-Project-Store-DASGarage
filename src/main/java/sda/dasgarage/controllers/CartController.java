@@ -41,10 +41,14 @@ public class CartController {
     @GetMapping("/get-cart")
     public ModelAndView getCart() {
         ModelAndView modelAndView = new ModelAndView("/cart");
-        Optional<User> user = getLoggedInUser();
 
+        Optional<User> user = getLoggedInUser();
         if (user.isPresent()) {
             modelAndView.addObject("cart", cartRepository.findAllByUser_Username(user.get().getUsername()));
+//            cartCount
+            Integer userId = userRepository.findUserEntityByUsername(user.get().getUsername()).getUserId();
+            Long cartLenght = cartRepository.countAllByUserId(userId);
+            modelAndView.addObject("cartSize", cartLenght);
 
         } else {
             modelAndView.addObject("cart", new ArrayList<>());
