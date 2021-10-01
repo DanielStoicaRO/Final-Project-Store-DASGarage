@@ -14,13 +14,10 @@ import java.util.Optional;
 
 @Controller
 public class GeneralController {
-
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private CartRepository cartRepository;
-
     //    cartCount/userIsPresent
     public Optional<User> getLoggedInUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -34,7 +31,6 @@ public class GeneralController {
     @GetMapping("/contactUs")
     public ModelAndView getContactUs() {
         ModelAndView modelAndView = new ModelAndView("contactUs");
-
         Optional<User> user = getLoggedInUser();
         if (user.isPresent()) {
 //            cart count
@@ -44,11 +40,9 @@ public class GeneralController {
         }
         return modelAndView;
     }
-
     @GetMapping("/leasing")
     public ModelAndView getLeasing() {
         ModelAndView modelAndView = new ModelAndView("leasing");
-
         Optional<User> user = getLoggedInUser();
         if (user.isPresent()) {
 //            cart count
@@ -59,9 +53,17 @@ public class GeneralController {
         return modelAndView;
     }
 
-    @GetMapping("/testPage")
-    public String getTesting() {
-        return "testPage";
+    @GetMapping("/pay")
+    public ModelAndView getPay() {
+        ModelAndView modelAndView = new ModelAndView("pay");
+        return modelAndView;
     }
+    @GetMapping("/successfully")
+    public ModelAndView getSuccessfulPay() {
+        ModelAndView modelAndView = new ModelAndView("successfully");
+        return modelAndView;
+    }
+
+
 
 }

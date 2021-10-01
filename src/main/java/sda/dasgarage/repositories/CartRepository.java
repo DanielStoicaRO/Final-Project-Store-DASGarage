@@ -13,4 +13,7 @@ public interface CartRepository extends JpaRepository<CartEntity, Integer> {
 
 //    4cart count
     Long countAllByUserId(Integer userId);
+
+    //add quantity
+    CartEntity findByProductIdAndUserId(Integer prodId, Integer userId);
 }

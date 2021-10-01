@@ -62,6 +62,11 @@
             margin-top: 10px;
         }
 
+        .card-body {
+            align-self: center;
+        }
+
+
         #price {
             font-size: 20px;
             font-weight: bold;
@@ -76,6 +81,72 @@
             font-style: oblique;
             font-size: 30px;
         }
+
+
+        /*card hover effect*/
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif
+        }
+
+        .container {
+            min-height: 100vh;
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        p {
+            margin: 0px
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background: #fff;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            user-select: none;
+            z-index: 10;
+            overflow: hidden
+        }
+
+        .card:hover {
+            color: black;
+            transform: scale(1.035);
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
+            background: linear-gradient(white, aquamarine);
+        }
+
+        @keyframes popBackground {
+            0% {
+                height: 20px;
+                border-top-left-radius: 50%;
+                border-top-right-radius: 50%
+            }
+
+            50% {
+                height: 80px;
+                border-top-left-radius: 75%;
+                border-top-right-radius: 75%
+            }
+
+            75% {
+                height: 160px;
+                border-top-left-radius: 85%;
+                border-top-right-radius: 85%
+            }
+
+            100% {
+                height: 320px;
+                border-top-left-radius: 100%;
+                border-top-right-radius: 100%
+            }
+        }
+
+
     </style>
 
 </head>
@@ -91,7 +162,7 @@
     <div class="container-fluid" style="margin-bottom: 10px;">
 
         <a href="/frontpage">
-            <img src="/imagines/dasgarageLogo.jpg" alt="" width="130" height="100"
+            <img src="/imagines/dasgarageLogo.jpg" width="130" height="100"
                  class="d-inline-block align-text-top">
         </a>
         <a class="navbar-brand" href="/frontpage">"Welcome to DAS Garage" by SDA Academy JavaRemote Ro21-2021
@@ -134,6 +205,7 @@
                     <a class="nav-link" sec:authorize="hasAuthority('USER')" href="/get-cart">[Shopping Cart](<span
                             th:text="${cartSize} + ' product'"></span>)</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link "
                        href="https://www.accuweather.com/ro/ro/bucharest/287430/daily-weather-forecast/287430"
@@ -142,7 +214,7 @@
 
                 <!--               search-->
                 <li>
-                    <div id="search bar" class="col-sm">
+                    <div class="col-sm">
                         <script type="text/javascript">
                             function clearSearch() {
                                 window.location = "[[@{/frontpage}]]";
@@ -155,6 +227,7 @@
                         </form>
                     </div>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -174,8 +247,8 @@
     <div sec:authorize="isAuthenticated()">
         <img class="img-circle" src="/imagines/userLogo.jpg" width="90" height="50">
 
-<!--        <img src="/imagines/userLogo.jpg"  width="90" height="50"-->
-<!--             class="d-inline-block align-text-top">-->
+        <!--        <img src="/imagines/userLogo.jpg"  width="90" height="50"-->
+        <!--             class="d-inline-block align-text-top">-->
 
         <h3 style="color:black" sec:autorize="hasAnyAuthority('ADMIN', 'USER')" id="welcome">
             Welcome <span sec:authentication="name"/>!
@@ -195,27 +268,24 @@
 
 </div>
 
+<!--card-->
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 text-center">
             <div class="container">
                 <div class="row">
                     <div class="card text-center" th:each="product:${stockList}" style="width: 19rem;">
-                        <img th:src="${product.imagineUrl}" class="card-img-top" alt="CarPictures">
+                        <img th:src="${product.imagineUrl}">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product.brand}"></h5>
                             <p class="card-text" th:text="${product.description}"></p>
-                            <p class="card-text" th:text="${product.mileage} + ' KM' "></p>
                             <p id="price" class="card-text" th:text="${product.price} + ' Price €' "></p>
-                            <p class="card-text" th:text="${product.quantity} + ' Units' "></p>
-
                             <div>
-                                <a th:href="@{'/product/view/' + ${product.productId}}" class="btn btn-dark">View</a>
-
+                                <a th:href="@{'/product/view/' + ${product.productId}}"
+                                   class="btn btn-dark">View</a>
                                 <a th:href="@{'/add-cart/' + ${product.productId}}" class="btn btn-dark"
                                    sec:authorize="hasAuthority('USER')">Buy</a>
                             </div>
-
                         </div>
                     </div>
                 </div>

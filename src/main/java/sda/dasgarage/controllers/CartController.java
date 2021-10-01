@@ -9,21 +9,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import sda.dasgarage.entities.CartEntity;
+import sda.dasgarage.entities.ProductEntity;
 import sda.dasgarage.entities.UserEntity;
 import sda.dasgarage.repositories.CartRepository;
+import sda.dasgarage.repositories.ProductRepository;
 import sda.dasgarage.repositories.UserRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class CartController {
-
     @Autowired
     private CartRepository cartRepository;
-
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     public CartController() {
         System.out.println(this.getClass().getSimpleName() + " created");
@@ -41,7 +45,6 @@ public class CartController {
     @GetMapping("/get-cart")
     public ModelAndView getCart() {
         ModelAndView modelAndView = new ModelAndView("/cart");
-
         Optional<User> user = getLoggedInUser();
         if (user.isPresent()) {
             modelAndView.addObject("cart", cartRepository.findAllByUser_Username(user.get().getUsername()));
@@ -49,7 +52,15 @@ public class CartController {
             Integer userId = userRepository.findUserEntityByUsername(user.get().getUsername()).getUserId();
             Long cartLenght = cartRepository.countAllByUserId(userId);
             modelAndView.addObject("cartSize", cartLenght);
-
+            CartEntity dbCartEntity = cartRepository.findByProductIdAndUserId(userId, userId);
+//total price
+            Double totalCart = 0.0;
+            List<CartEntity> carts = cartRepository.findAllByUser_Username(user.get().getUsername());
+            for (CartEntity item:carts) {
+                totalCart += item.getTotal();
+            }
+            modelAndView.addObject("cart", carts);
+            modelAndView.addObject("total",totalCart);
         } else {
             modelAndView.addObject("cart", new ArrayList<>());
         }
@@ -73,15 +84,45 @@ public class CartController {
         ModelAndView modelAndView = new ModelAndView("redirect:/frontpage");
 
         Optional<User> user = getLoggedInUser();
+
         if (user.isPresent()) {
-            UserEntity userEntity = userRepository.findByUsername(user.get().getUsername());
-            cartEntity.setUserId(userEntity.getUserId());
-            cartEntity.setProductId(id);
-            cartEntity.setQuantity(1);
-            cartRepository.save(cartEntity);
-        } else {
-            modelAndView.addObject("cart", new ArrayList<>());
+            Integer userId = userRepository.findUserEntityByUsername(user.get().getUsername()).getUserId();
+            CartEntity dbCartEntity = cartRepository.findByProductIdAndUserId(id, userId);
+            if (dbCartEntity != null) {
+
+                dbCartEntity.setQuantity(dbCartEntity.getQuantity() + 1);
+                cartRepository.save(dbCartEntity);
+            } else {
+                cartEntity.setQuantity(1);
+                cartEntity.setProductId(id);
+                cartEntity.setUserId(userRepository.findByUsername(user.get().getUsername()).getUserId());
+                cartRepository.save(cartEntity);
+            }
         }
+
         return modelAndView;
     }
+
+//    @GetMapping("/successfully")
+//    public ModelAndView orderPlaced(CartEntity cart) {
+//        ModelAndView modelAndView = new ModelAndView("/successfully");
+//        Optional<User> user = getLoggedInUser();
+//
+//        if (user.isPresent()) {
+//            List<CartEntity> carts = cartRepository.findAllByUser_Username(user.get().getUsername());
+//
+//            if (!carts.isEmpty()) {
+//                for (CartEntity item : carts) {
+//                    Integer prodQuantityUntilOrder = productRepository.getById(item.getProductId()).getQuantity();
+//                    ProductEntity product = productRepository.getById(item.getProductId());
+//                    product.setQuantity(prodQuantityUntilOrder - item.getQuantity());
+//                    productRepository.save(product);
+//                    cartRepository.delete(item);
+//                }
+//            }
+//
+//        }
+//        return modelAndView;
+//    }
+
 }

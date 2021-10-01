@@ -18,9 +18,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/frontpage", "/login",
-                "/contactUs", "/imagines/**", "/leasing", "/product/view/*", "/register","/cart", "/testPage").permitAll();
+                "/contactUs", "/imagines/**", "/leasing",
+                "/product/view/*", "/register", "/cart", "/pay", "/successfully").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
-//        http.httpBasic();
         http.formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
@@ -43,13 +43,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication().passwordEncoder(passwordEncoder).dataSource(dataSource);
         System.out.println(passwordEncoder.encode("user"));
 
-
-//                .inMemoryAuthentication()
-//                .withUser("user").password(passwordEncoder.encode("user")).roles("USER")
-//                .and()
-//                .withUser("admin").password(passwordEncoder.encode("admin")).roles("ADMIN")
-//                .and().passwordEncoder(passwordEncoder);
     }
-
-
 }

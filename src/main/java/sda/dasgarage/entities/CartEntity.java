@@ -20,6 +20,12 @@ public class CartEntity {
     @JoinColumn(name="userId", insertable = false, updatable = false)
     private UserEntity user;
 
+//   total price in cart
+    public int getTotal() {
+        return getQuantity() * product.getPrice();
+    }
+    public void setTotal() { }
+
     public UserEntity getUser() {
         return user;
     }

@@ -67,6 +67,71 @@
             font-size: 20px;
             font-weight: bold;
         }
+
+        /*card hover effect*/
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif
+        }
+
+        .container {
+            min-height: 100vh;
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        p {
+            margin: 0px
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background: #fff;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            user-select: none;
+            z-index: 10;
+            overflow: hidden
+        }
+
+        .card:hover {
+            color: black;
+            transform: scale(1.035);
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
+            background: linear-gradient(white, aquamarine);
+        }
+
+        @keyframes popBackground {
+            0% {
+                height: 20px;
+                border-top-left-radius: 50%;
+                border-top-right-radius: 50%
+            }
+
+            50% {
+                height: 80px;
+                border-top-left-radius: 75%;
+                border-top-right-radius: 75%
+            }
+
+            75% {
+                height: 160px;
+                border-top-left-radius: 85%;
+                border-top-right-radius: 85%
+            }
+
+            100% {
+                height: 320px;
+                border-top-left-radius: 100%;
+                border-top-right-radius: 100%
+            }
+        }
+
+
     </style>
 
 </head>
@@ -182,24 +247,24 @@
 
 </div>
 
-<div class="card card-custom text-center" style="width: 40rem;">
+<div class="card card-custom text-center card-img-top" style="width: 40rem;">
     <img th:src="${product.imagineUrl}" class="card-img-top" alt="Car Pictures">
     <div class="card-body">
         <h5 class="card-title" th:text="${product.brand}">Card title</h5>
         <p class="card-text" th:text="${product.description}"></p>
         <p class="card-text" th:text="${product.mileage} + ' KM' "></p>
-        <p id="price" class="card-text" th:text="${product.price} + ' Price €' "></p>
+        <h4 id="price" class="card-text" th:text="${product.price} + ' Price €' "></h4>
         <p class="card-text" th:text="${product.quantity} + ' Units' "></p>
 
         <a href="/frontpage" class="btn btn-dark">Back</a>
-        <a th:href="@{'/product/view/' + ${product.productId}}" class="btn btn-dark"
+        <a th:href="@{'/add-cart/' + ${product.productId}}" class="btn btn-dark"
            sec:authorize="hasAuthority('USER')">Buy</a>
 
         <a th:href="@{'/product/edit/' + ${product.productId}}" class="btn btn-dark"
            sec:authorize="hasAuthority('ADMIN')">Edit</a>
         <a th:href="@{'/product/delete/' + ${product.productId}}" class="btn btn-dark"
            sec:authorize="hasAuthority('ADMIN')">Delete</a>
-        <a class="btn btn-dark" href="/leasing">Leasing</a>
+        <a class="btn btn-dark" href="/leasing" sec:authorize="hasAuthority('USER')">Leasing</a>
 
     </div>
 </div>

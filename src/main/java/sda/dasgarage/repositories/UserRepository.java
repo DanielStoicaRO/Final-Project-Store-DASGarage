@@ -8,7 +8,6 @@ import sda.dasgarage.entities.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
    UserEntity findByUsername(String username);
-
    //    4cart count
    UserEntity findUserEntityByUsername(String username);
 }

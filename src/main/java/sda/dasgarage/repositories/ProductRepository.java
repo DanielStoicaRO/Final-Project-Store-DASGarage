@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Integer> {
 
+//    search bar
     @Query(value = "select * from products p where p.brand like %?1%", nativeQuery = true)
     List<ProductEntity> findByKeyword(@Param("keyword") String keyword);
 

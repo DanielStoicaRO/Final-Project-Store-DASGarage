@@ -138,5 +138,4 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("errorHtml");
         return modelAndView;
     }
-
 }
