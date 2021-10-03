@@ -3,7 +3,7 @@ package sda.dasgarage.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="carts")
+@Table(name = "carts")
 public class CartEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,18 +13,20 @@ public class CartEntity {
     private Integer quantity;
 
     @ManyToOne
-    @JoinColumn(name="productId", insertable = false, updatable = false)
+    @JoinColumn(name = "productId", insertable = false, updatable = false)
     private ProductEntity product;
 
     @ManyToOne
-    @JoinColumn(name="userId", insertable = false, updatable = false)
+    @JoinColumn(name = "userId", insertable = false, updatable = false)
     private UserEntity user;
 
-//   total price in cart
+    //   total price in cart
     public int getTotal() {
         return getQuantity() * product.getPrice();
     }
-    public void setTotal() { }
+
+    public void setTotal() {
+    }
 
     public UserEntity getUser() {
         return user;

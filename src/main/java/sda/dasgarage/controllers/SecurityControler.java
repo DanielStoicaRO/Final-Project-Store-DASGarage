@@ -24,20 +24,20 @@ public class SecurityControler {
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
-    public ModelAndView getLogin(){
-     ModelAndView modelAndView = new ModelAndView("login");
-     return modelAndView;
+    public ModelAndView getLogin() {
+        ModelAndView modelAndView = new ModelAndView("login");
+        return modelAndView;
     }
 
     @GetMapping("/register")
-    public ModelAndView getRegister(){
+    public ModelAndView getRegister() {
         ModelAndView modelAndView = new ModelAndView("register");
         modelAndView.addObject("registerContainer", new RegisterModel());
         return modelAndView;
     }
 
     @PostMapping("/register")
-    public ModelAndView registerUser(@ModelAttribute ("registerContainer") RegisterModel registerModel){
+    public ModelAndView registerUser(@ModelAttribute("registerContainer") RegisterModel registerModel) {
         ModelAndView modelAndView = new ModelAndView("redirect:/frontpage");
 
         UserEntity userEntity = new UserEntity();

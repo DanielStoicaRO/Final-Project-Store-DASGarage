@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import sda.dasgarage.config.AppConfig;
 
 /**
- * Online Store DAS Garage
+ * Welcome Online Store DAS Garage
  */
 public class AppStart {
     public static void main(String[] args) {

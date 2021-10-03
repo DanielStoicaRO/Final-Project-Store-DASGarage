@@ -25,7 +25,6 @@ public class CartController {
     private CartRepository cartRepository;
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private ProductRepository productRepository;
 
@@ -56,11 +55,11 @@ public class CartController {
 //total price
             Double totalCart = 0.0;
             List<CartEntity> carts = cartRepository.findAllByUser_Username(user.get().getUsername());
-            for (CartEntity item:carts) {
+            for (CartEntity item : carts) {
                 totalCart += item.getTotal();
             }
             modelAndView.addObject("cart", carts);
-            modelAndView.addObject("total",totalCart);
+            modelAndView.addObject("total", totalCart);
         } else {
             modelAndView.addObject("cart", new ArrayList<>());
         }
@@ -103,26 +102,27 @@ public class CartController {
         return modelAndView;
     }
 
-//    @GetMapping("/successfully")
-//    public ModelAndView orderPlaced(CartEntity cart) {
-//        ModelAndView modelAndView = new ModelAndView("/successfully");
-//        Optional<User> user = getLoggedInUser();
-//
-//        if (user.isPresent()) {
-//            List<CartEntity> carts = cartRepository.findAllByUser_Username(user.get().getUsername());
-//
-//            if (!carts.isEmpty()) {
-//                for (CartEntity item : carts) {
-//                    Integer prodQuantityUntilOrder = productRepository.getById(item.getProductId()).getQuantity();
-//                    ProductEntity product = productRepository.getById(item.getProductId());
-//                    product.setQuantity(prodQuantityUntilOrder - item.getQuantity());
-//                    productRepository.save(product);
-//                    cartRepository.delete(item);
-//                }
-//            }
-//
-//        }
-//        return modelAndView;
-//    }
+    //delete from cart
+    @GetMapping("/successfully")
+    public ModelAndView orderSuccessfully(CartEntity cart) {
+        ModelAndView modelAndView = new ModelAndView("/successfully");
+        Optional<User> user = getLoggedInUser();
+
+        if (user.isPresent()) {
+            List<CartEntity> carts = cartRepository.findAllByUser_Username(user.get().getUsername());
+
+            if (!carts.isEmpty()) {
+                for (CartEntity item : carts) {
+                    Integer prodQuantityUntilOrder = productRepository.getById(item.getProductId()).getQuantity();
+                    ProductEntity product = productRepository.getById(item.getProductId());
+                    product.setQuantity(prodQuantityUntilOrder - item.getQuantity());
+                    productRepository.save(product);
+                    cartRepository.delete(item);
+                }
+            }
+
+        }
+        return modelAndView;
+    }
 
 }

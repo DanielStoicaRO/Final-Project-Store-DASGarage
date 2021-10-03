@@ -27,7 +27,7 @@ public class FirstRestController {
 
     @PostMapping("/api/saveProduct")
     public String saveProduct(@RequestBody @Valid ProductEntity productEntity, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return bindingResult.getFieldErrors().stream().map(e -> e.getDefaultMessage()).collect(Collectors.joining("; "));
         }
         productRepository.save(productEntity);

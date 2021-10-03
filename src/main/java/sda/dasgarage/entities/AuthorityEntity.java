@@ -3,7 +3,7 @@ package sda.dasgarage.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="authorities")
+@Table(name = "authorities")
 public class AuthorityEntity {
 
     @Id

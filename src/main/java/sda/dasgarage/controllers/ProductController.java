@@ -58,6 +58,7 @@ public class ProductController {
         }
         return modelAndView;
     }
+
     //            cart count / userIsPresent
     public Optional<User> getLoggedInUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

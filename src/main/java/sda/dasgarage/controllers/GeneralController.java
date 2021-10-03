@@ -18,6 +18,7 @@ public class GeneralController {
     private UserRepository userRepository;
     @Autowired
     private CartRepository cartRepository;
+
     //    cartCount/userIsPresent
     public Optional<User> getLoggedInUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -40,6 +41,7 @@ public class GeneralController {
         }
         return modelAndView;
     }
+
     @GetMapping("/leasing")
     public ModelAndView getLeasing() {
         ModelAndView modelAndView = new ModelAndView("leasing");
@@ -58,12 +60,5 @@ public class GeneralController {
         ModelAndView modelAndView = new ModelAndView("pay");
         return modelAndView;
     }
-    @GetMapping("/successfully")
-    public ModelAndView getSuccessfulPay() {
-        ModelAndView modelAndView = new ModelAndView("successfully");
-        return modelAndView;
-    }
-
-
 
 }
