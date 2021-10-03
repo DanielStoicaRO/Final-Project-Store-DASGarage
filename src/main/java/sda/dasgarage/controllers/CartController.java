@@ -47,7 +47,7 @@ public class CartController {
         Optional<User> user = getLoggedInUser();
         if (user.isPresent()) {
             modelAndView.addObject("cart", cartRepository.findAllByUser_Username(user.get().getUsername()));
-//            cartCount
+//cartCount
             Integer userId = userRepository.findUserEntityByUsername(user.get().getUsername()).getUserId();
             Long cartLenght = cartRepository.countAllByUserId(userId);
             modelAndView.addObject("cartSize", cartLenght);
@@ -120,7 +120,6 @@ public class CartController {
                     cartRepository.delete(item);
                 }
             }
-
         }
         return modelAndView;
     }
