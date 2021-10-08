@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Final Project DASGarage" />
+        <module name="Final Project DASGarage - Copy" />
         <module name="DASGarage" />
       </profile>
     </annotationProcessing>

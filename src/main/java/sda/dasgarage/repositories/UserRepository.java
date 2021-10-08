@@ -11,4 +11,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
     //    4cart count
     UserEntity findUserEntityByUsername(String username);
+
 }
