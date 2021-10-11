@@ -1,6 +1,7 @@
 package sda.dasgarage.models;
 
 public class RegisterModel {
+
     private String username;
     private String password;
     private String city;

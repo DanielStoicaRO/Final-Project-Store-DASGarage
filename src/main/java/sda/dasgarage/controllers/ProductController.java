@@ -136,7 +136,7 @@ public class ProductController {
             ModelAndView modelAndView = new ModelAndView("redirect:/frontpage");
             return modelAndView;
         }
-        ModelAndView modelAndView = new ModelAndView("errorHtml");
+        ModelAndView modelAndView = new ModelAndView("error");
         return modelAndView;
     }
 }

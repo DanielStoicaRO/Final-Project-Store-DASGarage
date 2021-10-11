@@ -14,7 +14,7 @@ import sda.dasgarage.repositories.AuthorityRepository;
 import sda.dasgarage.repositories.UserRepository;
 
 @Controller
-public class SecurityControler {
+public class SecurityController {
 
     @Autowired
     private UserRepository userRepository;
@@ -38,7 +38,7 @@ public class SecurityControler {
 
     @PostMapping("/register")
     public ModelAndView registerUser(@ModelAttribute("registerContainer") RegisterModel registerModel) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/frontpage");
+        ModelAndView modelAndView = new ModelAndView("redirect:/login");
 
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(registerModel.getUsername());
