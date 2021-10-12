@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
@@ -9,6 +10,35 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
             crossorigin="anonymous"></script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+
+    <!--    adding style CSS-->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <!--    adding style Java Script-->
+    <script src="./js/mainLogin.js"></script>
+
+    <meta charset="UTF-8">
+    <title>Users View</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+
+
 
     <style>
         html {
@@ -204,81 +234,59 @@
 
 <!--navbar-->
 <br>
-<nav id="design" class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid" style="margin-bottom: 10px;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a href="/frontpage">
+        <img src="/imagines/dasgarageLogo.jpg" width="130" height="100"
+             class="d-inline-block align-text-top">
+    </a>
 
-        <a href="/frontpage">
-            <img src="/imagines/dasgarageLogo.jpg" alt="" width="130" height="100"
-                 class="d-inline-block align-text-top">
-        </a>
-        <a class="navbar-brand " href="/frontpage">"Welcome to DAS Garage" by SDA Academy JavaRemote Ro21-2021
-            Team, Daniel Stoica </a>
+    <a class="navbar-brand" href="/frontpage">"Welcome to DAS Garage" by SDA Academy JavaRemote Ro21-2021
+        Team, Daniel Stoica </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/frontpage">[Home]</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contactUs">[Contact Us]</a>
-                </li>
-                <li class="nav-item dropdown" sec:authorize="!isAuthenticated()">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        [Login]
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/register">New User</a></li>
-                        <li><a class="dropdown-item" href="/login">Existing User</a></li>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-                    </ul>
-                </li>
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link " href="/logout">[Logout]</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="/leasing">[Leasing]</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                    <a class="nav-link" href="/product/add">[Add product]</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="/get-cart">[Shopping Cart]</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link "
-                       href="https://www.accuweather.com/ro/ro/bucharest/287430/daily-weather-forecast/287430"
-                       th:target="_blank">[Weather]</a>
-                </li>
-            </ul>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav" id=design>
+            <a class="nav-item nav-link active" href="/frontpage">[Home]<span class="sr-only"></span></a>
+
+            <a class="nav-link " href="/contactUs">[Contact Us]</a>
+
+            <li>
+                <a class="nav-item nav-link" href="/register" sec:authorize="!isAuthenticated()">[Login]</a>
+            </li>
+
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link " href="/logout">[Logout]</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link " href="/leasing">[Leasing]</a>
+            </li>
+
+            <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                <a class="nav-link" href="/product/add">[Add product]</a>
+            </li>
+
+            <li class="nav-item">
+                <!--                    count shopping cart-->
+                <a class="nav-link" sec:authorize="hasAuthority('USER')" href="/get-cart">[Shopping Cart](<span
+                        th:text="${cartSize} + ' product'"></span>)</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="https://www.accuweather.com/ro/ro/bucharest/287430/daily-weather-forecast/287430"
+                   th:target="_blank">[Weather]</a>
+            </li>
         </div>
     </div>
 </nav>
+<br>
 
 <br>
-<!--widgets curs valutar-->
-<div style="position: absolute; top: 120px; right: 50px;">
-    <script type="text/javascript" language="javascript"
-            src="//cdn1.curs-valutar-bnr.ro/custom_widgets/get_widget.php?lw=230&rw=1&font=Trebuchet%20MS&cft=00b0ea&ctt=ffffff&ttb=0&cc=f2f2f2&cfb=ffffff&ct=000000&pd=4&pc=4&aiv=1&val[]=8&val[]=19&val[]=9&val[]=4&mf=14&avc=1&ac=1&aod=0&lang=ro"></script>
-    <span style="font-family:arial;font-size:11px;color:#a2a2a2">&nbsp; oferit de: <a
-            href="https://www.curs-valutar-bnr.ro"
-            title="Curs BNR"
-            style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
-
-    <!--afisare username-->
-    <li>
-        <div>
-            <h4>
-                <a>Welcome</a>
-                <span sec:authentication="name"/>
-            </h4>
-        </div>
-    </li>
-</div>
 
 <!--widgets weather-->
 <div style="position: absolute; top: 130px; left: 30px;">
@@ -293,60 +301,53 @@
 </div>
 
 <br>
-<!--Register Panel-->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-3 col-md-2"></div>
-        <div class="col-lg-6 col-md-8 login-box">
-            <div class="col-lg-12 login-key">
-                <i class="fa fa-key" aria-hidden="true"></i>
-            </div>
-            <div class="col-lg-12 login-title">
-                REGISTRATION PANEL
-            </div>
+<!--Register Panel NOU cu LOGIN-->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-            <div class="col-lg-12 login-form">
-                <div class="col-lg-12 login-form">
+<div class="login-reg-panel">
+    <div class="login-info-box">
+        <h2>Have an account?</h2>
+        <p>Please Login</p>
+        <label id="label-register" for="log-reg-show">Login</label>
+        <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked">
+    </div>
 
-                    <form action="/register" method="post" th:object="${registerContainer}">
+    <div class="register-info-box">
+        <h2>Don't have an account?</h2>
+        <p>Please Register</p>
+        <label id="label-login" for="log-login-show">Register</label>
+        <input type="radio" name="active-log-panel" id="log-login-show">
+    </div>
 
-                        <div class="form-group">
-                            <label class="form-control-label">NEW USERNAME</label>
-                            <input type="username" name="username" class="form-control" th:field="*{username}">
-                        </div>
+    <div class="white-panel">
+        <div class="login-show">
+            <form method="post" action="/register">
+                <h2>LOGIN</h2>
+                <input type="text" placeholder="username" name="username">
+                <input type="password" name="password">
+                <input type="submit" value="Login">
 
-                        <div class="form-group">
-                            <label class="form-control-label">NEW PASSWORD</label>
-                            <input type="password" name="password" class="form-control" th:field="*{password}">
-                        </div>
+            </form>
+        </div>
+        <div class="register-show">
+            <h2>REGISTER</h2>
+            <form action="/register" method="post" th:object="${registerContainer}">
+                <input type="username" placeholder="Username" name="username" th:field="*{username}">
 
-                        <div class="form-group">
-                            <label class="form-control-label">Input CITY</label>
-                            <input type="text" name="password" class="form-control" th:field="*{city}">
-                        </div>
+                <input type="password" placeholder="Password" name="password" th:field="*{password}">
 
-                        <div class="form-group">
-                            <label class="form-control-label">Input ADDRESS</label>
-                            <input type="text" name="password" class="form-control" th:field="*{address}">
-                        </div>
+                <input type="text" placeholder="City" name="city" th:field="*{city}">
 
-                        <div class="form-group">
-                            <label class="form-control-label">Input EMAIL ADDRESS</label>
-                            <input type="email" name="password" class="form-control" th:field="*{emailAddress}">
-                        </div>
+                <input type="text" placeholder="Address" name="address" th:field="*{address}">
 
-                        <div class="col-lg-12 loginbttm">
-                            <div class="col-lg-6 login-btm login-text">
+                <input type="email" placeholder="Email" name="emailAddress" th:field="*{emailAddress}">
 
-                            </div>
-                            <div class="col-lg-6 login-btm login-button">
-                                <button type="submit" class="btn btn-outline-primary">SUBMIT</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-2"></div>
+                <input type="submit" value="Register">
+
+            </form>
         </div>
     </div>
 </div>

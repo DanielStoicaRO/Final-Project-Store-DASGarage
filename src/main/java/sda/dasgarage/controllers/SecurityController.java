@@ -23,11 +23,11 @@ public class SecurityController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping("/login")
-    public ModelAndView getLogin() {
-        ModelAndView modelAndView = new ModelAndView("login");
-        return modelAndView;
-    }
+//    @GetMapping("/login")
+//    public ModelAndView getLogin() {
+//        ModelAndView modelAndView = new ModelAndView("login");
+//        return modelAndView;
+//    }
 
     @GetMapping("/register")
     public ModelAndView getRegister() {
@@ -38,7 +38,7 @@ public class SecurityController {
 
     @PostMapping("/register")
     public ModelAndView registerUser(@ModelAttribute("registerContainer") RegisterModel registerModel) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/login");
+        ModelAndView modelAndView = new ModelAndView("redirect:/frontpage");
 
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(registerModel.getUsername());

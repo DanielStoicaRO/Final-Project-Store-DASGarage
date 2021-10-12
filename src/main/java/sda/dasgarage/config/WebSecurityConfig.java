@@ -18,15 +18,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/frontpage", "/login",
                 "/contactUs", "/imagines/**", "/leasing",
-                "/product/view/*", "/register", "/cart", "/pay", "/successfully", "/error").permitAll();
+                "/product/view/*", "/register", "/cart", "/pay", "/successfully", "/error", "/css/**", "/js/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/login")
+                .loginPage("/register")
+                .loginProcessingUrl("/register")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/frontpage")
-                .failureUrl("/login");
+                .failureUrl("/register");
 
         http.logout().logoutUrl("/logout").logoutSuccessUrl("/frontpage").deleteCookies("JSESSIONID").clearAuthentication(true).invalidateHttpSession(true);
     }
