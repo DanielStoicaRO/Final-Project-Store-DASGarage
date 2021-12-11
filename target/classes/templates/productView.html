@@ -262,6 +262,7 @@
 
         <a th:href="@{'/product/edit/' + ${product.productId}}" class="btn btn-dark"
            sec:authorize="hasAuthority('ADMIN')">Edit</a>
+
         <a th:href="@{'/product/delete/' + ${product.productId}}" class="btn btn-dark"
            sec:authorize="hasAuthority('ADMIN')">Delete</a>
         <a class="btn btn-dark" href="/leasing" sec:authorize="hasAuthority('USER')">Leasing</a>

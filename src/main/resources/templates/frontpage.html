@@ -10,144 +10,144 @@
             integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
             crossorigin="anonymous"></script>
 
-    <style>
-        html {
-            height: 100%;
+
+<!--    <link th:rel="stylesheet" th:href="@{css/frontPage.css}"/>-->
+
+<style>
+    html {
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .bg {
+        animation: slide 3s ease-in-out infinite alternate;
+        background-image: linear-gradient(-60deg, deepskyblue 50%, firebrick 50%);
+        bottom: 0;
+        left: -50%;
+        opacity: .5;
+        position: fixed;
+        right: -50%;
+        top: 0;
+        z-index: -1;
+    }
+
+    .bg2 {
+        animation-direction: alternate-reverse;
+        animation-duration: 4s;
+    }
+
+    .bg3 {
+        animation-duration: 5s;
+    }
+
+    h1 {
+        font-family: monospace;
+    }
+
+    @keyframes slide {
+        0% {
+            transform: translateX(-25%);
+        }
+        100% {
+            transform: translateX(25%);
+        }
+    }
+
+    .card:not(:last-child) {
+        margin-right: 10px;
+    }
+
+    .card {
+        margin-top: 10px;
+    }
+
+    .card-body {
+        align-self: center;
+    }
+    
+    #price {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    #design {
+        font-size: 20px;
+        /*font-weight: bold;*/
+    }
+
+    #welcome {
+        font-style: oblique;
+        font-size: 30px;
+    }
+
+
+    /*card hover effect*/
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif
+    }
+
+    .container {
+        min-height: 100vh;
+        padding: 5px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    p {
+        margin: 0px
+    }
+
+    .card {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background: #fff;
+        transition: all 0.5s ease;
+        cursor: pointer;
+        user-select: none;
+        z-index: 10;
+        overflow: hidden
+    }
+
+    .card:hover {
+        color: black;
+        transform: scale(1.035);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
+        background: linear-gradient(white, aquamarine);
+    }
+
+    @keyframes popBackground {
+        0% {
+            height: 20px;
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%
         }
 
-        body {
-            margin: 0;
+        50% {
+            height: 80px;
+            border-top-left-radius: 75%;
+            border-top-right-radius: 75%
         }
 
-        .bg {
-            animation: slide 3s ease-in-out infinite alternate;
-            background-image: linear-gradient(-60deg, deepskyblue 50%, firebrick 50%);
-            bottom: 0;
-            left: -50%;
-            opacity: .5;
-            position: fixed;
-            right: -50%;
-            top: 0;
-            z-index: -1;
+        75% {
+            height: 160px;
+            border-top-left-radius: 85%;
+            border-top-right-radius: 85%
         }
 
-        .bg2 {
-            animation-direction: alternate-reverse;
-            animation-duration: 4s;
+        100% {
+            height: 320px;
+            border-top-left-radius: 100%;
+            border-top-right-radius: 100%
         }
+    }
+</style>
 
-        .bg3 {
-            animation-duration: 5s;
-        }
-
-        h1 {
-            font-family: monospace;
-        }
-
-        @keyframes slide {
-            0% {
-                transform: translateX(-25%);
-            }
-            100% {
-                transform: translateX(25%);
-            }
-        }
-
-
-        .card:not(:last-child) {
-            margin-right: 10px;
-        }
-
-        .card {
-            margin-top: 10px;
-        }
-
-        .card-body {
-            align-self: center;
-        }
-
-
-        #price {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        #design {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        #welcome {
-            font-style: oblique;
-            font-size: 30px;
-        }
-
-
-        /*card hover effect*/
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif
-        }
-
-        .container {
-            min-height: 100vh;
-            padding: 5px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center
-        }
-
-        p {
-            margin: 0px
-        }
-
-        .card {
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            background: #fff;
-            transition: all 0.5s ease;
-            cursor: pointer;
-            user-select: none;
-            z-index: 10;
-            overflow: hidden
-        }
-
-        .card:hover {
-            color: black;
-            transform: scale(1.035);
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
-            background: linear-gradient(white, aquamarine);
-        }
-
-        @keyframes popBackground {
-            0% {
-                height: 20px;
-                border-top-left-radius: 50%;
-                border-top-right-radius: 50%
-            }
-
-            50% {
-                height: 80px;
-                border-top-left-radius: 75%;
-                border-top-right-radius: 75%
-            }
-
-            75% {
-                height: 160px;
-                border-top-left-radius: 85%;
-                border-top-right-radius: 85%
-            }
-
-            100% {
-                height: 320px;
-                border-top-left-radius: 100%;
-                border-top-right-radius: 100%
-            }
-        }
-
-
-    </style>
 
 </head>
 <body>
@@ -199,8 +199,8 @@
                 <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a class="nav-link" href="/product/add">[Add product]</a>
                 </li>
-                <li class="nav-item">
 
+                <li class="nav-item">
                     <!--                    count shopping cart-->
                     <a class="nav-link" sec:authorize="hasAuthority('USER')" href="/get-cart">[Shopping Cart](<span
                             th:text="${cartSize} + ' product'"></span>)</a>

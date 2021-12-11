@@ -210,9 +210,6 @@
 
                 <!--                uploadFile-->
                 <div class="mb-3">
-                    <!--                    <label for="inputImagineUrl" class="form-label">ImagineUrl</label>-->
-                    <!--                    <input type="text" class="form-control" id="inputImagineUrl" name="imagineUrl" th:readonly="true"-->
-                    <!--                           th:field="*{imagineUrl}">-->
                     <input type="hidden" name="imagineUrl" th:field="*{imagineUrl}">
                     <img th:src="${product.imagineUrl}">
 
