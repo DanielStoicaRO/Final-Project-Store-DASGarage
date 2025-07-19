@@ -1,306 +1,242 @@
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <title>Front PAGE</title>
-    <link href="https://fonts.googleapis.com/css?family=Courgette|Open+Sans&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-            crossorigin="anonymous"></script>
-
-
-<!--    <link th:rel="stylesheet" th:href="@{css/frontPage.css}"/>-->
-
-<style>
-    html {
-        height: 100%;
-    }
-
-    body {
-        margin: 0;
-    }
-
-    .bg {
-        animation: slide 3s ease-in-out infinite alternate;
-        background-image: linear-gradient(-60deg, deepskyblue 50%, firebrick 50%);
-        bottom: 0;
-        left: -50%;
-        opacity: .5;
-        position: fixed;
-        right: -50%;
-        top: 0;
-        z-index: -1;
-    }
-
-    .bg2 {
-        animation-direction: alternate-reverse;
-        animation-duration: 4s;
-    }
-
-    .bg3 {
-        animation-duration: 5s;
-    }
-
-    h1 {
-        font-family: monospace;
-    }
-
-    @keyframes slide {
-        0% {
-            transform: translateX(-25%);
-        }
-        100% {
-            transform: translateX(25%);
-        }
-    }
-
-    .card:not(:last-child) {
-        margin-right: 10px;
-    }
-
-    .card {
-        margin-top: 10px;
-    }
-
-    .card-body {
-        align-self: center;
-    }
-    
-    #price {
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    #design {
-        font-size: 20px;
-        /*font-weight: bold;*/
-    }
-
-    #welcome {
-        font-style: oblique;
-        font-size: 30px;
-    }
-
-
-    /*card hover effect*/
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        font-family: 'Roboto', sans-serif
-    }
-
-    .container {
-        min-height: 100vh;
-        padding: 5px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center
-    }
-
-    p {
-        margin: 0px
-    }
-
-    .card {
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        background: #fff;
-        transition: all 0.5s ease;
-        cursor: pointer;
-        user-select: none;
-        z-index: 10;
-        overflow: hidden
-    }
-
-    .card:hover {
-        color: black;
-        transform: scale(1.035);
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
-        background: linear-gradient(white, aquamarine);
-    }
-
-    @keyframes popBackground {
-        0% {
-            height: 20px;
-            border-top-left-radius: 50%;
-            border-top-right-radius: 50%
+    <meta charset="UTF-8">
+    <title>Pagina Principala - DAS Garage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: white;
+            color: black;
         }
 
-        50% {
-            height: 80px;
-            border-top-left-radius: 75%;
-            border-top-right-radius: 75%
+        .navbar {
+            background-color: #ffffff;
+            padding-top: 3px;
+            padding-bottom: 3px;
         }
 
-        75% {
-            height: 160px;
-            border-top-left-radius: 85%;
-            border-top-right-radius: 85%
+        .navbar-brand, .nav-link {
+            color: black !important;
         }
 
-        100% {
-            height: 320px;
-            border-top-left-radius: 100%;
-            border-top-right-radius: 100%
+        .nav-link:hover {
+            color: #ffcc00 !important;
         }
-    }
-</style>
 
+        .navbar-nav a button,
+        .navbar-nav form button {
+            background-color: #444;
+            border: none;
+            color: white;
+            padding: 4px 10px;
+            font-size: 13px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
 
+        .navbar-nav a button:hover,
+        .navbar-nav form button:hover {
+            background-color: #666;
+        }
+
+        .form-switch .form-check-input {
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .motivational-text {
+            text-align: center;
+            font-family: 'Segoe Script', cursive;
+            font-size: 18px;
+            margin-top: 10px;
+            color: #444;
+        }
+
+        .main-image-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .main-image {
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(100, 100, 100, 0.25);
+            width: 70vw;
+            height: auto;
+            max-height: 620px;
+        }
+
+        .ticker {
+            position: fixed;
+            bottom: 40px;
+            width: 100%;
+            background: rgba(255,255,255,0.85);
+            color: #222;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 9999;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .ticker span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker-scroll 20s linear infinite;
+        }
+
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 8px 0;
+            background-color: #ffffff;
+            font-size: 13px;
+            text-align: center;
+            color: #000;
+            font-weight: 600;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.1; }
+            100% { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
-
-<!--navbar-->
-<br>
-<nav id="design" class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid" style="margin-bottom: 10px;">
-
-        <a href="/frontpage">
-            <img src="/imagines/dasgarageLogo.jpg" width="130" height="100"
-                 class="d-inline-block align-text-top">
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/frontpage}">
+            <img th:src="@{/imagines/dasgaragelogo1.jpg}" alt="Logo" style="height: 45px;">
         </a>
-        <a class="navbar-brand" href="/frontpage">"Welcome to DAS Garage" by SDA Academy JavaRemote Ro21-2021
-            Team, Daniel Stoica </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/frontpage">[Home]</a>
+        <span class="navbar-brand">DAS GARAGE</span>
+        <span class="navbar-brand ms-2">Partener</span>
+        <img th:src="@{/imagines/logoariana.jpg}" alt="Logo Ariana" style="height: 42px; margin-left: 10px;">
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/admin/add-car}"><button>Adaugă mașină</button></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/contactUs">[Contact Us]</a>
-                </li>
-                <li class="nav-item dropdown" sec:authorize="!isAuthenticated()">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        [Login]
+                    <a th:href="@{/cum-cumpar}">
+                        <button style="animation: blink 1s infinite;">Cum Cumpar?</button>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/register">New User</a></li>
-                        <li><a class="dropdown-item" href="/login">Existing User</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link " href="/logout">[Logout]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/leasing">[Leasing]</a>
+                    <a th:href="@{/allcars}"><button>Toate Mașinile</button></a>
                 </li>
-                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                    <a class="nav-link" href="/product/add">[Add product]</a>
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/admin/stock}"><button>Stoc</button></a>
                 </li>
-
                 <li class="nav-item">
-                    <!--                    count shopping cart-->
-                    <a class="nav-link" sec:authorize="hasAuthority('USER')" href="/get-cart">[Shopping Cart](<span
-                            th:text="${cartSize} + ' product'"></span>)</a>
+                    <a th:href="@{/leasing}"><button>Credit Extern</button></a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link "
-                       href="https://www.accuweather.com/ro/ro/bucharest/287430/daily-weather-forecast/287430"
-                       th:target="_blank">[Weather]</a>
+                    <a th:href="@{/contact}"><button>Contact</button></a>
                 </li>
-
-                <!--               search-->
-                <li>
-                    <div class="col-sm">
-                        <script type="text/javascript">
-                            function clearSearch() {
-                                window.location = "[[@{/frontpage}]]";
-                            }
-                        </script>
-                        <form th:action="@{/frontpage}" method="get">
-                            <input type="text" name="keyword" id="keyword" size="20" th:value="${keyword}" required/>
-                            <input type="submit" value="Search"/>
-                            <input type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
-                        </form>
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <select id="themeSelector" class="form-select form-select-sm ms-2">
+                        <option value="primavara">Primavara</option>
+                        <option value="vara">Vara</option>
+                        <option value="toamna">Toamna</option>
+                        <option value="iarna">Iarna</option>
+                        <option value="craciun">Crăciun</option>
+                    </select>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <div class="form-check form-switch ms-3 mt-1">
+                        <input class="form-check-input" type="checkbox" id="toggleTicker">
+                        <label class="form-check-label text-dark" for="toggleTicker">Reclamă</label>
                     </div>
                 </li>
-
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/login}"><button><i class="fa-solid fa-user"></i></button></a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit"><i class="fa-solid fa-right-from-bracket"></i></button>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<br>
 
-<!--widgets curs valutar-->
-<div style="position: absolute; top: 130px; right: 50px;">
-    <script type="text/javascript" language="javascript"
-            src="//cdn1.curs-valutar-bnr.ro/custom_widgets/get_widget.php?lw=230&rw=1&font=Trebuchet%20MS&cft=00b0ea&ctt=ffffff&ttb=0&cc=f2f2f2&cfb=ffffff&ct=000000&pd=4&pc=4&aiv=1&val[]=8&val[]=19&val[]=9&val[]=4&mf=14&avc=1&ac=1&aod=0&lang=ro"></script>
-    <span style="font-family:arial;font-size:11px;color:#a2a2a2">&nbsp; oferit de: <a
-            href="https://www.curs-valutar-bnr.ro"
-            title="Curs BNR"
-            style="font-size:11px;color:#a2a2a2;text-decoration:underline">curs-valutar-bnr.ro</a></span>
+<div class="motivational-text">Fiecare masina are o poveste, a ta poate incepe aici!</div>
 
-    <!--afisare username-->
-    <div sec:authorize="isAuthenticated()">
-        <img class="img-circle" src="/imagines/userLogo.jpg" width="90" height="50">
-
-        <!--        <img src="/imagines/userLogo.jpg"  width="90" height="50"-->
-        <!--             class="d-inline-block align-text-top">-->
-
-        <h3 style="color:black" sec:autorize="hasAnyAuthority('ADMIN', 'USER')" id="welcome">
-            Welcome <span sec:authentication="name"/>!
-        </h3>
-    </div>
+<div class="main-image-container">
+    <img id="mainImage" th:src="@{/imagines/primavara.png}" alt="Poza principala" class="main-image">
 </div>
 
-<!--widgets weather-->
-<div style="position: absolute; top: 130px; left: 30px;">
-    <div id="wwo-weather-widget-4"></div>
-    <script type='text/javascript'
-            src='https://www.worldweatheronline.com/widget/v5/weather-widget.ashx?loc=2997066&wid=4&tu=1&div=wwo-weather-widget-4'
-            async></script>
-    <noscript><a href="https://www.worldweatheronline.com/spring-weather/central-java/id.aspx"
-                 alt="Hour by hour Spring, Central Java weather">Spring, Central Java weather forecast hourly</a>
-    </noscript>
-
+<div class="ticker d-none" id="promoTicker">
+    <span><i class="fas fa-car-side"></i> Profită acum de ofertele momentului: Reduceri Speciale, Dobanda Fixa, Achizitie sau Finanțare la pretul fără TVA!</span>
 </div>
 
-<!--card-->
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="card text-center" th:each="product:${stockList}" style="width: 19rem;">
-                        <img th:src="${product.imagineUrl}">
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${product.brand}"></h5>
-                            <p class="card-text" th:text="${product.description}"></p>
-                            <p id="price" class="card-text" th:text="${product.price} + ' Price €' "></p>
-                            <div>
-                                <a th:href="@{'/product/view/' + ${product.productId}}"
-                                   class="btn btn-dark">View</a>
-                                <a th:href="@{'/add-cart/' + ${product.productId}}" class="btn btn-dark"
-                                   sec:authorize="hasAuthority('USER')">Buy</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<footer>
+    SERIOZITATE · ÎNCREDERE · PROFESIONALISM & Pasiune pentru mașini din 1999
+</footer>
 
-<br>
-<div class="fixed-bottom text-center p-2 bg-white text-dark">
-    DAS Garage is a fictional company made only for Java learning purposes.
-    Terms and conditions don't apply, user discretion is advised.
-    Website by SDA Academy JavaRemote Ro21-2021 Team, Daniel Stoica
-</div>
+<script>
+    const themeSelector = document.getElementById("themeSelector");
+    const mainImage = document.getElementById("mainImage");
+    const promoTicker = document.getElementById("promoTicker");
+    const toggleTicker = document.getElementById("toggleTicker");
+
+    const themes = {
+        primavara: "primavara.png",
+        vara: "vara.png",
+        toamna: "toamna.png",
+        iarna: "iarna.png",
+        craciun: "craciun.png"
+    };
+
+    function applyThemeFromStorage() {
+        const storedTheme = localStorage.getItem("selectedTheme") || "primavara";
+        mainImage.src = "/imagines/" + themes[storedTheme];
+        if (themeSelector) themeSelector.value = storedTheme;
+    }
+
+    function applyTickerFromStorage() {
+        const showTicker = localStorage.getItem("showTicker") === "true";
+        if (toggleTicker) toggleTicker.checked = showTicker;
+        promoTicker.classList.toggle("d-none", !showTicker);
+    }
+
+    themeSelector?.addEventListener("change", function () {
+        const selected = this.value;
+        localStorage.setItem("selectedTheme", selected);
+        mainImage.src = "/imagines/" + themes[selected];
+    });
+
+    toggleTicker?.addEventListener("change", function () {
+        const isChecked = this.checked;
+        localStorage.setItem("showTicker", isChecked);
+        promoTicker.classList.toggle("d-none", !isChecked);
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        applyThemeFromStorage();
+        applyTickerFromStorage();
+    });
+</script>
 
 </body>
 </html>
+
 

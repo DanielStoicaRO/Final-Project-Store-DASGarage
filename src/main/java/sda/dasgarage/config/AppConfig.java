@@ -1,13 +1,13 @@
 package sda.dasgarage.config;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-@SpringBootApplication
-@ComponentScan("sda.dasgarage")
-@EntityScan("sda.dasgarage.entities")
-@EnableJpaRepositories("sda.dasgarage.repositories")
+@Configuration
+@ComponentScan(basePackages = "sda.dasgarage")
+@EnableJpaRepositories(basePackages = "sda.dasgarage.repositories")
+@EntityScan(basePackages = "sda.dasgarage.entities")
 public class AppConfig {
 }

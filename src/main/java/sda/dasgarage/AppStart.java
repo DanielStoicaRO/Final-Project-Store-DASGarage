@@ -1,13 +1,16 @@
+
 package sda.dasgarage;
 
 import org.springframework.boot.SpringApplication;
-import sda.dasgarage.config.AppConfig;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
 
-/**
- * Welcome Online Store DAS Garage
- */
+@SpringBootApplication
+@ComponentScan(basePackages = "sda.dasgarage")
+@EntityScan(basePackages = "sda.dasgarage")
 public class AppStart {
     public static void main(String[] args) {
-        SpringApplication.run(AppConfig.class);
+        SpringApplication.run(AppStart.class, args);
     }
 }
