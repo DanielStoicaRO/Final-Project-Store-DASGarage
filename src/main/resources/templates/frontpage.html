@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina Principala - DAS Garage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: white;
+            color: black;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+
+        .navbar-brand, .nav-link {
+            color: black !important;
+        }
+
+        .nav-link:hover {
+            color: #ffcc00 !important;
+        }
+
+        .navbar-nav a button,
+        .navbar-nav form button {
+            background-color: #444;
+            border: none;
+            color: white;
+            padding: 4px 10px;
+            font-size: 13px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
+
+        .navbar-nav a button:hover,
+        .navbar-nav form button:hover {
+            background-color: #666;
+        }
+
+        .form-switch .form-check-input {
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .motivational-text {
+            text-align: center;
+            font-family: 'Segoe Script', cursive;
+            font-size: 18px;
+            margin-top: 10px;
+            color: #444;
+        }
+
+        .main-image-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .main-image {
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(100, 100, 100, 0.25);
+            width: 70vw;
+            height: auto;
+            max-height: 620px;
+        }
+
+        .ticker {
+            position: fixed;
+            bottom: 40px;
+            width: 100%;
+            background: rgba(255,255,255,0.85);
+            color: #222;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 9999;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .ticker span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker-scroll 20s linear infinite;
+        }
+
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 8px 0;
+            background-color: #ffffff;
+            font-size: 13px;
+            text-align: center;
+            color: #000;
+            font-weight: 600;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.1; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/frontpage}">
+            <img th:src="@{/imagines/dasgaragelogo1.jpg}" alt="Logo" style="height: 45px;">
+        </a>
+        <span class="navbar-brand">DAS GARAGE</span>
+        <span class="navbar-brand ms-2">Partener</span>
+        <img th:src="@{/imagines/logoariana.jpg}" alt="Logo Ariana" style="height: 42px; margin-left: 10px;">
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/admin/add-car}"><button>Adaugă mașină</button></a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/cum-cumpar}">
+                        <button style="animation: blink 1s infinite;">Cum Cumpar?</button>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/allcars}"><button>Toate Mașinile</button></a>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/admin/stock}"><button>Stoc</button></a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/leasing}"><button>Credit Extern</button></a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/contact}"><button>Contact</button></a>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <select id="themeSelector" class="form-select form-select-sm ms-2">
+                        <option value="primavara">Primavara</option>
+                        <option value="vara">Vara</option>
+                        <option value="toamna">Toamna</option>
+                        <option value="iarna">Iarna</option>
+                        <option value="craciun">Crăciun</option>
+                    </select>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <div class="form-check form-switch ms-3 mt-1">
+                        <input class="form-check-input" type="checkbox" id="toggleTicker">
+                        <label class="form-check-label text-dark" for="toggleTicker">Reclamă</label>
+                    </div>
+                </li>
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/login}"><button><i class="fa-solid fa-user"></i></button></a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit"><i class="fa-solid fa-right-from-bracket"></i></button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="motivational-text">Fiecare masina are o poveste, a ta poate incepe aici!</div>
+
+<div class="main-image-container">
+    <img id="mainImage" th:src="@{/imagines/primavara.png}" alt="Poza principala" class="main-image">
+</div>
+
+<div class="ticker d-none" id="promoTicker">
+    <span><i class="fas fa-car-side"></i> Profită acum de ofertele momentului: Reduceri Speciale, Dobanda Fixa, Achizitie sau Finanțare la pretul fără TVA!</span>
+</div>
+
+<footer>
+    SERIOZITATE · ÎNCREDERE · PROFESIONALISM & Pasiune pentru mașini din 1999
+</footer>
+
+<script>
+    const themeSelector = document.getElementById("themeSelector");
+    const mainImage = document.getElementById("mainImage");
+    const promoTicker = document.getElementById("promoTicker");
+    const toggleTicker = document.getElementById("toggleTicker");
+
+    const themes = {
+        primavara: "primavara.png",
+        vara: "vara.png",
+        toamna: "toamna.png",
+        iarna: "iarna.png",
+        craciun: "craciun.png"
+    };
+
+    function applyThemeFromStorage() {
+        const storedTheme = localStorage.getItem("selectedTheme") || "primavara";
+        mainImage.src = "/imagines/" + themes[storedTheme];
+        if (themeSelector) themeSelector.value = storedTheme;
+    }
+
+    function applyTickerFromStorage() {
+        const showTicker = localStorage.getItem("showTicker") === "true";
+        if (toggleTicker) toggleTicker.checked = showTicker;
+        promoTicker.classList.toggle("d-none", !showTicker);
+    }
+
+    themeSelector?.addEventListener("change", function () {
+        const selected = this.value;
+        localStorage.setItem("selectedTheme", selected);
+        mainImage.src = "/imagines/" + themes[selected];
+    });
+
+    toggleTicker?.addEventListener("change", function () {
+        const isChecked = this.checked;
+        localStorage.setItem("showTicker", isChecked);
+        promoTicker.classList.toggle("d-none", !isChecked);
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        applyThemeFromStorage();
+        applyTickerFromStorage();
+    });
+</script>
+
+</body>
+</html>
+
+

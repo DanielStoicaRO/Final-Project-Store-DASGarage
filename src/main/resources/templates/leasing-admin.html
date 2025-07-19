@@ -1,0 +1,145 @@
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Leasing Financiar - Admin</title>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            margin-top: 40px;
+            max-width: 700px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        input, select {
+            margin-bottom: 15px;
+        }
+        .btn-primary {
+            margin-top: 10px;
+        }
+        #pdfButton {
+            background-color: #28a745;
+            border: none;
+        }
+        #pdfButton:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4">Calculator Leasing Financiar (Admin)</h2>
+
+    <div class="mb-3">
+        <label for="client">Nume Client:</label>
+        <input type="text" class="form-control" id="client" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="bun">Bun Finanțat:</label>
+        <input type="text" class="form-control" id="bun" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="pret">Preț fără TVA (€):</label>
+        <input type="number" class="form-control" id="pret" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="avans">Avans (%):</label>
+        <input type="number" class="form-control" id="avans" value="15" min="10" max="50">
+    </div>
+
+    <div class="mb-3">
+        <label for="reziduala">Valoare Reziduală (%):</label>
+        <input type="number" class="form-control" id="reziduala" value="5" min="1" max="20">
+    </div>
+
+    <div class="mb-3">
+        <label for="dobanda">Dobândă fixă (%):</label>
+        <input type="number" class="form-control" id="dobanda" value="4.6" step="0.1">
+    </div>
+
+    <div class="mb-3">
+        <label for="perioada">Perioada:</label>
+        <select class="form-control" id="perioada">
+            <option value="12">12 luni</option>
+            <option value="24">24 luni</option>
+            <option value="36">36 luni</option>
+            <option value="48">48 luni</option>
+            <option value="60">60 luni</option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary w-100" onclick="calculeaza()">Calculează</button>
+
+    <div class="mt-4" id="rezultate" style="display: none;">
+        <p><strong>Avans (cu TVA + taxa mgmt):</strong> <span id="avansAfis"></span></p>
+        <p><strong>Rată lunară estimativă:</strong> <span id="rataAfis"></span></p>
+        <p><strong>Asigurare CASCO lunară:</strong> <span id="cascoAfis"></span></p>
+    </div>
+
+    <form id="pdfForm" th:action="@{/admin/generare-pdf-leasing}" method="get" target="_blank">
+        <input type="hidden" name="client" id="clientHidden">
+        <input type="hidden" name="bun" id="bunHidden">
+        <input type="hidden" name="valoare" id="pretHidden">
+        <input type="hidden" name="perioada" id="perioadaHidden">
+        <input type="hidden" name="dobanda" id="dobandaHidden">
+        <input type="hidden" name="reziduala" id="rezidualaHidden">
+        <button type="submit" class="btn btn-success w-100 mt-3" id="pdfButton">Generează Ofertă PDF</button>
+    </form>
+</div>
+
+<script>
+    function calculeaza() {
+        const pret = parseFloat(document.getElementById("pret").value);
+        const avansProc = parseFloat(document.getElementById("avans").value);
+        const reziduala = parseFloat(document.getElementById("reziduala").value);
+        const dobanda = parseFloat(document.getElementById("dobanda").value);
+        const perioada = parseInt(document.getElementById("perioada").value);
+
+        if (!pret || !avansProc || !reziduala || !dobanda || !perioada) return;
+
+        const taxaAdministrare = pret * 0.025;
+        const comisionFix = 17;
+        const tva = 1.19;
+
+        const avans = pret * (avansProc / 100) + taxaAdministrare;
+        const avansTVA = avans * tva;
+        const valoareReziduala = pret * (reziduala / 100);
+        const sumaFinantata = pret - pret * (avansProc / 100) + taxaAdministrare;
+
+        const dobandaLunara = dobanda / 100 / 12;
+        const rata = (sumaFinantata * dobandaLunara) / (1 - Math.pow(1 + dobandaLunara, -perioada)) + comisionFix;
+        const casco = Math.round((pret * 0.04) / 12);
+
+        document.getElementById("avansAfis").innerText = avansTVA.toFixed(0) + " €";
+        document.getElementById("rataAfis").innerText = rata.toFixed(2) + " €";
+        document.getElementById("cascoAfis").innerText = casco + " €";
+        document.getElementById("rezultate").style.display = "block";
+
+        // Setează valorile în hidden inputs pt PDF
+        document.getElementById("clientHidden").value = document.getElementById("client").value;
+        document.getElementById("bunHidden").value = document.getElementById("bun").value;
+        document.getElementById("pretHidden").value = pret;
+        document.getElementById("perioadaHidden").value = perioada;
+        document.getElementById("dobandaHidden").value = dobanda;
+        document.getElementById("rezidualaHidden").value = reziduala;
+    }
+</script>
+
+</body>
+</html>
