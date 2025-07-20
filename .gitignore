@@ -1,3 +1,3 @@
 echo *.jar > .gitignore
 echo /out/ >> .gitignore
-echo /target/ >> .gitignore
+echo /target/ >> .gitignoretarget/ 
